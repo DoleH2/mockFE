@@ -1,0 +1,67 @@
+[
+    {
+        "maSanPham":"1",
+        "tenSanPham":"Iphone 15",
+        "ram":"8GB",
+        "nhanHang":"Apple",
+        "mauSac":"Black",
+        "giaVon":"20000000",
+        "giaNiemYet":"30000000",
+        "camera":"12MP",
+        "boNhoTrong":"256GB",
+        "cpu":"abc",
+        "imgUrl":"img/product/Galaxy-S22-Ultra-Burgundy-600x600.jpg"
+    },
+    {
+        "maSanPham":"2",
+        "tenSanPham":"Iphone 14",
+        "ram":"16GB",
+        "nhanHang":"Apple",
+        "mauSac":"White",
+        "giaVon":"18000000",
+        "giaNiemYet":"25000000",
+        "camera":"12MP",
+        "boNhoTrong":"256GB",
+        "cpu":"abc",
+        "imgUrl":"img/product/Samsung-Galaxy-A53-den-thumb-1-600x600.jpg"
+    },
+    {
+        "maSanPham":"3",
+        "tenSanPham":"Zenphone 8",
+        "ram":"16GB",
+        "nhanHang":"Asus",
+        "mauSac":"Black",
+        "giaVon":"10000000",
+        "giaNiemYet":"20000000",
+        "camera":"18MP",
+        "boNhoTrong":"256GB",
+        "cpu":"abc",
+        "imgUrl":"img/product/Xiaomi-12-xam-thumb-mau-600x600.jpg"
+    },
+    {
+        "maSanPham":"4",
+        "tenSanPham":"Iphone 15",
+        "ram":"8GB",
+        "nhanHang":"Samsung",
+        "mauSac":"Black",
+        "giaVon":"20000000",
+        "giaNiemYet":"30000000",
+        "camera":"12MP",
+        "boNhoTrong":"256GB",
+        "cpu":"abc",
+        "imgUrl":"img/product/iphone-11-trang-600x600.jpg"
+    },
+    {
+        "maSanPham":"5",
+        "tenSanPham":"Iphone 15",
+        "ram":"8GB",
+        "nhanHang":"Oppo",
+        "mauSac":"Black",
+        "giaVon":"20000000",
+        "giaNiemYet":"30000000",
+        "camera":"12MP",
+        "boNhoTrong":"256GB",
+        "cpu":"abc",
+        "imgUrl":"img/product/samsung-galaxy-z-fold4-kem-256gb-600x600.jpg"
+    }
+]

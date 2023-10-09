@@ -1,0 +1,68 @@
+.accordion .accordion-item{
+    background-color:#2B2D31 !important ;
+}
+.accordion-body button p{
+    border-left: 2px solid #36373D;
+}
+.menu-item button,.menu-item .accordion-button{
+    color:white !important;
+    background-color:#2B2D31 !important ;
+}
+
+.menu-item button,.menu-item .accordion-button,.frame-info-user p{
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+}
+
+.menu-item button i{
+    color: #707678;
+}
+.menu-item .accordion-button::after{
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !important;
+}
+
+.menu-item button:hover,.menu-item .accordion-button:hover{
+    color:white !important;
+    background-color:#36373D !important ;
+    box-sizing: border-box !important;
+}
+.menu-item .accordion-body button:hover p,.menu-item .accordion-body .selected p{
+    border-left: 2px solid #ffffff !important;
+}
+
+.menu-item button:hover i{
+    animation: shake .3s;
+}
+.menu-item button:hover i,.menu-item .accordion-button:hover i{
+    color: white !important;
+}
+.menu-item.selected button,.menu-item .accordion-body .selected p{
+    background-color: #36373D !important;
+}
+
+.menu-item.selected i{
+    color: white;
+}
+
+
+th,td{
+    vertical-align: middle;
+}
+
+@keyframes shake {
+    0% { transform: rotate(0deg); }
+    10% { transform: rotate(-10deg); }
+    20% { transform: rotate(10deg); }
+    30% { transform: rotate(0deg); }
+    40% { transform: rotate(10deg); }
+    50% { transform: rotate(-10deg); }
+    60% { transform: rotate(0deg); }
+    70% { transform: rotate(-10deg); }
+    80% { transform: rotate(10deg); }
+    90% { transform: rotate(0deg); }
+    100% { transform: rotate(-10deg); }
+    
+}
+
