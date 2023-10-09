@@ -98,6 +98,7 @@ const AddKHPage = () => {
                                 <input type="date" id="ngaySinh" name="ngaySinh" style={{ maxWidth: '500px', background: '#F8FAFC' }}
                                     className="form-control"
                                     {...register("ngaySinh", {
+                                        required:{value:true,message:configMes.REQ}
                                     })}
                                 />
                                 {errors.ngaySinh && <p className="text-danger ps-1 m-0">{errors.ngaySinh.message}</p>}
@@ -111,7 +112,7 @@ const AddKHPage = () => {
                                 <div className="frame-radio d-flex gap-1">
                                     <input type="radio" id="nam"
                                         value="Nam" name="gioiTinh" style={{ maxWidth: '500px', background: '#F8FAFC' }}
-                                        className="d-block"
+                                        className="d-block" checked={true}
                                         {...register("gioiTinh", {
                                             validate: validateGioiTinh(gender)
                                         })}

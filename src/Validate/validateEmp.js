@@ -11,7 +11,7 @@ export const configMes = {
     "MAX_GIA_TRI": "Vui long nhap so be hon 1.000.000.000",
     "MAT_KHAU": "Mat khau khong dung dinh dang",
     "EMAIL": "Vui long nhap dinh dang email",
-    "REQ":"Vui lòng nhập trường này"
+    "REQ": "Vui lòng nhập trường này"
 }
 
 
@@ -41,6 +41,32 @@ export const validateRepassword = (valuePass, valueRePass) => {
 export const validateChucVu = (value) => {
     if (value !== 'NhanVien' && value !== 'QuanLy') {
         return 'Giá trị có lỗi, vui lòng load lại trang'
+    }
+    return true;
+}
+
+export const validateInfoKHInHDBH = (soDienThoai, tenKhachHang, gioiTinh, ngaySinh, setError) => {
+    if (soDienThoai === undefined) {
+        console.log('vao');
+        setError('soDienThoai', { message: 'Vui lòng nhập số điện thoại' });
+        return false;
+    } else {
+        let flag = true;
+        if (tenKhachHang === "") {
+            flag = false;
+            setError('tenKhachHang', { message: 'Vui lòng nhập tên khách hàng' });
+        }
+        if (gioiTinh === "") {
+            flag = false;
+            setError('gioiTinh', { message: 'Vui lòng chọn giới tính' });
+        }
+        if (ngaySinh === "") {
+            flag = false;
+            setError('ngaySinh', { message: 'Vui lòng nhập ngày sinh' });
+        }
+        if (!flag) {
+            return false;
+        }
     }
     return true;
 }

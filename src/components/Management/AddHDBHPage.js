@@ -1,6 +1,6 @@
 import MenuSide from "./MenuSide";
 import { useForm } from "react-hook-form";
-import { configMes, validateName } from "../../Validate/validateEmp";
+import { configMes, validateInfoKHInHDBH, validateName } from "../../Validate/validateEmp";
 import { useNavigate } from "react-router-dom";
 import { getRequest, postRequest } from "../../axios/httpRequest";
 import { useEffect, useRef, useState } from "react";
@@ -11,9 +11,9 @@ import Toast from "../utils/Toast";
 const AddHDBHPage = () => {
   // xử lý chuyển trang sang url khác
   let navigate = useNavigate();
-  const changeRouter = (path) => {
-    navigate(path);
-  };
+  const changeRouter = (path, data) => {
+    navigate(path, { state: data });
+  }
   // end xử lý chuyển trang
 
   //lấy dữ liệu nhà cung cấp
@@ -46,16 +46,19 @@ const AddHDBHPage = () => {
   //end xử lý sdt
   //xử lý form
   const {
-    register,handleSubmit,formState: { errors },setValue,watch,unregister,setError,clearErrors
+    register, handleSubmit, formState: { errors }, setValue, watch, unregister, setError, clearErrors
   } = useForm();
   ////xử lý khi submit
   const [toastStatus, setToastStatus] = useState({ status: '', message: '' });
-  const accountRef = useRef();
+  // const accountRef = useRef();
+
+
   const [clickSubmit, setClickSubmit] = useState(true);
   const onSubmit = async (data) => {
     data.soDienThoai = sdtSelect;
-    if (data.soDienThoai === undefined) {
-      setError('soDienThoai', { message: 'Vui lòng nhập số điện thoại' });
+    const result = validateInfoKHInHDBH(data.soDienThoai, data.tenKhachHang, data.gioiTinh, data.ngaySinh, setError);
+    if (!result) {
+      return;
     }
     if (listCTHD.length === 0) {
       setError('custom', { message: 'Chua co thong tin ban hang' });
@@ -78,7 +81,7 @@ const AddHDBHPage = () => {
       } catch (error) {
         const cloneErr = { ...error.response.data }
         await setErrorField(cloneErr);
-        setToastStatus({ status: 'error', message: 'Thêm không thành công' });
+        setToastStatus({ status: 'error', message: error.message });
         setClickSubmit(true);
       }
     };
@@ -178,13 +181,13 @@ const AddHDBHPage = () => {
   ]);
   const [onCheck, setOnCheck] = useState(false);
 
-  const handleClickSearch = () => {
+  const handleClickSearch = (sdt) => {
     clearErrors("soDienThoai");
     clearErrors("tenKhachHang");
     clearErrors("gioiTinh");
     clearErrors("ngaySinh");
 
-    const kq = listKH.filter((kh) => kh.soDienThoai === sdtSelect);
+    const kq = listKH.filter((kh) => kh.soDienThoai === sdt);
     if (kq.length === 0) {
       const newKH = {
         maKhachHang: "",
@@ -250,15 +253,9 @@ const AddHDBHPage = () => {
                   options={options}
                   onChange={(e) => {
                     handleChangeSdtKH(e.value);
+                    handleClickSearch(e.value);
                   }}
                 />
-                <button
-                  type="button"
-                  className="btn btn-primary"
-                  onClick={handleClickSearch}
-                >
-                  Search
-                </button>
               </div>
               <div className="mb-3">
                 {errors.soDienThoai && (
@@ -271,7 +268,7 @@ const AddHDBHPage = () => {
 
               {/* frame-input */}
               <div className="frame-input d-flex gap-2 align-items-center">
-                <label htmlFor="tenKhachHang" className="fs-6 fw-bold w-25">
+                <label htmlFor="tenKhachHang" className="fs-6 fw-bold w-25 me-4">
                   Họ và Tên
                 </label>
 
@@ -285,18 +282,20 @@ const AddHDBHPage = () => {
                       : true
                   }
                   {...register("tenKhachHang", {
-                    required: { value: true, message: 'Vui lòng chọn số điện thoại và nhập trường này' },
+                    // required: { value: true, 
+                    // message: 'Vui lòng chọn số điện thoại và nhập trường này' },
                     pattern: { value: /^[a-zA-Z ]{1,}$/ },
                     max: { value: 50, message: 'Tối đa 50 kí tự' }
                   })}
                 />
               </div>
               <div className="mb-3">
-                {errors.tenKhachHang && (
+                {errors.tenKhachHang && dataKHSelect[0].tenKhachHang === "" && onCheck && (
                   <p className="text-danger ps-1 m-0">
                     {errors.tenKhachHang.message}
                   </p>
-                )}
+                )
+                }
               </div>
               {/* end frame-input */}
 
@@ -314,7 +313,7 @@ const AddHDBHPage = () => {
                       dataKHSelect[0].gioiTinh === "" && onCheck ? false : true
                     }
                     {...register("gioiTinh", {
-                      required: { value: true, message: 'Vui lòng chọn số điện thoại và nhập trường này' }
+                      // required: { value: true, message: 'Vui lòng chọn số điện thoại và nhập trường này' }
                     })}
                   >
                     <option value="">---Chọn Giới Tính---</option>
@@ -323,7 +322,7 @@ const AddHDBHPage = () => {
                     <option value="Khac">Khác</option>
                   </select>
                   <div className="mb-3">
-                    {errors.gioiTinh && (
+                    {errors.gioiTinh && dataKHSelect[0].gioiTinh === "" && onCheck && (
                       <p className="text-danger ps-1 m-0">
                         {errors.gioiTinh.message}
                       </p>
@@ -340,7 +339,7 @@ const AddHDBHPage = () => {
                   </label>
                   <input
                     type="date"
-                    ref={accountRef}
+                    // ref={accountRef}
                     id="ngaySinh"
                     style={{ maxWidth: "700px" }}
                     className="form-control"
@@ -348,11 +347,11 @@ const AddHDBHPage = () => {
                       dataKHSelect[0].ngaySinh === "" && onCheck ? false : true
                     }
                     {...register("ngaySinh", {
-                      required: { value: true, message: 'Vui lòng chọn số điện thoại và nhập trường này' },
+                      // required: { value: true, message: 'Vui lòng chọn số điện thoại và nhập trường này' },
                     })}
                   />
                   <div className="mb-3">
-                    {errors.ngaySinh && (
+                    {errors.ngaySinh && dataKHSelect[0].ngaySinh === "" && onCheck && (
                       <p className="text-danger ps-1 m-0">
                         {errors.ngaySinh.message}
                       </p>
@@ -598,31 +597,6 @@ const AddHDBHPage = () => {
                       disabled={true}
                       value={tinhTien.thanhToan}
                     />
-                  </div>
-                  <div className="frame-input mb-2 d-flex w-100 flex-wrap">
-                    <label className="fs-6 fw-bold w-25">Hình Thức TT</label>
-                    <div className="d-flex flex-column gap-3">
-                      <div className="d-flex gap-2">
-                        <input type="radio" value="80000000" name="httt"
-                          {...register("phuongThucThanhToan",
-                            {
-
-                            }
-                          )}
-                        />
-                        <label>Zalo Pay</label>
-                      </div>
-                      <div className="d-flex gap-2 w-100">
-                        <input type="radio" value="80000000" name="httt"
-                          {...register("phuongThucThanhToan",
-                            {
-
-                            }
-                          )}
-                        />
-                        <label>Tiền mặt</label>
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>

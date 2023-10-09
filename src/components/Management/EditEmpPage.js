@@ -229,10 +229,9 @@ const EditEmpPage = () => {
                   <input
                     type="password"
                     id="matKhau"
-                    name="matKhau"
                     style={{ maxWidth: "500px", background: "#F8FAFC" }}
                     className="form-control"
-                    {...register("matKhau", {
+                    {...register("password", {
                       maxLength: { value: 50, message: "Toi da 50 ki tu" },
                       pattern: {
                         value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
@@ -250,7 +249,7 @@ const EditEmpPage = () => {
                 {/* end frame-input */}
                 {/* frame-input */}
                 <div className="frame-input mb-2 w-50">
-                  <label htmlFor="repassword" className="fs-6 fw-bold">
+                  <label htmlFor="rePassword" className="fs-6 fw-bold">
                     Re-Password
                   </label>
                   <input
