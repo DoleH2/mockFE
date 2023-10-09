@@ -74,7 +74,7 @@ const ListNCCPage = () => {
                 let flag = false;
                 types.map(type => {
                     const valueCheck = emp[type.value] + ""
-                    if (valueCheck.indexOf(value) >= 0) {
+                    if ((valueCheck.toLowerCase()).indexOf((value.toLowerCase())) >= 0) {
                         flag = true
                     }
                 })
@@ -123,7 +123,7 @@ const ListNCCPage = () => {
     ////xử lý khi click xác nhận xóa ở modal box sẽ xóa account
     const handleConfirmDelete = (account) => {
         const fetchApi = async () => {
-            const result = await deleteRequest("/nha_cung_cap", account);
+            const result = await deleteRequest("/staff/nha_cung_cap", account);
             setReloadData(pre => !pre);
         };
         fetchApi();

@@ -94,7 +94,7 @@ const ListThongKePage = () => {
             (typeThongKe === "thongKeSanPham" ? listTKJSON.listSanPham : listTKJSON.listNhanVien).map(emp => {
                 let flag = false;
                 const valueCheck = emp[types.value] + ""
-                if (valueCheck.indexOf(value) >= 0) {
+                if ((valueCheck.toLowerCase()).indexOf((value.toLowerCase())) >= 0) {
                     flag = true
                 }
                 if (flag) {

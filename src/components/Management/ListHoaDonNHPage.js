@@ -72,7 +72,7 @@ const ListHoaDonNHPage = () => {
                 let flag = false;
                 types.map(type => {
                     const valueCheck = emp[type.value] + ""
-                    if (valueCheck.indexOf(value) >= 0) {
+                    if ((valueCheck.toLowerCase()).indexOf((value.toLowerCase())) >= 0) {
                         flag = true
                     }
                 })

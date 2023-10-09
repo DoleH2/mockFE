@@ -75,7 +75,7 @@ const ListNVPage = () => {
                 let flag = false;
                 types.map(type => {
                     const valueCheck = emp[type.value] + ""
-                    if (valueCheck.indexOf(value) >= 0) {
+                    if ((valueCheck.toLowerCase()).indexOf((value.toLowerCase())) >= 0) {
                         flag = true
                     }
                 })
@@ -127,7 +127,7 @@ const ListNVPage = () => {
     ////xử lý khi click xác nhận xóa ở modal box sẽ xóa account
     const handleConfirmDelete = (account) => {
         const fetchApi = async () => {
-            const result = await deleteRequest("/nhan_vien", account);
+            const result = await deleteRequest("/admin/nhan_vien", account);
             setReloadData(pre => !pre);
         };
         fetchApi();

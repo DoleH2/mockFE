@@ -77,7 +77,7 @@ const ListSPPage = () => {
                 let flag = false;
                 types.map(type => {
                     const valueCheck = emp[type.value] + ""
-                    if (valueCheck.indexOf(value) >= 0) {
+                    if ((valueCheck.toLowerCase()).indexOf((value.toLowerCase())) >= 0) {
                         flag = true
                     }
                 })
@@ -126,7 +126,7 @@ const ListSPPage = () => {
     ////xử lý khi click xác nhận xóa ở modal box sẽ xóa account
     const handleConfirmDelete = (account) => {
         const fetchApi = async () => {
-            const result = await deleteRequest("/san_pham", account);
+            const result = await deleteRequest("/staff/san_pham", account);
             setReloadData(pre=>!pre);
         };
         fetchApi();
