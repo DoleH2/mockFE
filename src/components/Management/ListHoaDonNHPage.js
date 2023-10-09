@@ -10,7 +10,7 @@ import LoadCircle from '../utils/LoadCircle';
 import moment from 'moment';
 import ButtonAdd from '../utils/ButtonAdd';
 
-let hdNhapHangJSON =[];
+let hdNhapHangJSON = [];
 const ListHoaDonNHPage = () => {
     //thông báo toast thành công
     const location = useLocation();
@@ -30,7 +30,7 @@ const ListHoaDonNHPage = () => {
             try {
                 const result = await getRequest("/staff/nhap_hang");
                 setLoading(false);
-                hdNhapHangJSON =result;
+                hdNhapHangJSON = result;
                 setData(result || []);
             } catch (error) {
                 const objErr = JSON.parse(JSON.stringify(error))
@@ -97,7 +97,15 @@ const ListHoaDonNHPage = () => {
         const curDataPage = data.slice(index, index + rowsPerPage);
         setDataDisplay([...curDataPage]);
     }, [currentPage, data])
+    useEffect(() => {
+        setCurrentPage(0);
+        const pagination = document.getElementsByClassName("pagination")[0];
+        const liPagination = pagination && pagination.getElementsByTagName("li")[1];
+        if (liPagination) {
+            liPagination.getElementsByTagName("a")[0].click();
+        }
 
+    }, [valueSearch])
     ////xử lý khi click sang trang khác
     const handlePageChange = (selectPage) => {
         setCurrentPage(selectPage.selected);

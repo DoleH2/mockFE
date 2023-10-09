@@ -43,10 +43,10 @@ const ListHoaDonBHPage = () => {
     const [typeSearch, setTypeSearch] = useState([]);
     ////Danh sách các option, value phải khớp với key trong json data
     const options = [
-        { value: 'maHoaDonBanHang', label: 'Mã HĐ Bán Hàng' },
-        { value: 'maNhanVien', label: 'Mã Nhân Viên' },
-        { value: 'maKhachHang', label: 'Mã Khách Hàng' },
-        { value: 'thoiGianBanHang', label: 'Thời Gian Bán Hàng' },
+        { value: 'maHoaDonBanHang', label: 'Mã HĐBH' },
+        { value: 'maNhanVien', label: 'Account NV' },
+        { value: 'maKhachHang', label: 'Mã KH' },
+        { value: 'thoiGianBanHang', label: 'Thời Gian BH' },
         { value: 'tongHoaDon', label: 'Tổng Hóa Đơn' }
     ]
     ////xử lý khi thay đổi option
@@ -71,7 +71,7 @@ const ListHoaDonBHPage = () => {
                 let flag = false;
                 types.map(type => {
                     const valueCheck = emp[type.value] + ""
-                    if (valueCheck.indexOf(value) >= 0) {
+                    if ((valueCheck.toLowerCase()).indexOf((value.toLowerCase())) >= 0) {
                         flag = true
                     }
                 })
@@ -97,6 +97,15 @@ const ListHoaDonBHPage = () => {
         const curDataPage = data.slice(index, index + rowsPerPage);
         setDataDisplay([...curDataPage]);
     }, [currentPage, data])
+    useEffect(()=>{
+        setCurrentPage(0);
+        const pagination = document.getElementsByClassName("pagination")[0];
+        const liPagination = pagination&&pagination.getElementsByTagName("li")[1];
+        if(liPagination){
+            liPagination.getElementsByTagName("a")[0].click();
+        }
+
+    },[valueSearch])
 
     ////xử lý khi click sang trang khác
     const handlePageChange = (selectPage) => {
@@ -266,6 +275,7 @@ const ListHoaDonBHPage = () => {
                                 nextLabel="Next"
                                 breakLabel={'...'}
                                 // pageRangeDisplayed={3}
+                                initialSelected={currentPage}
                                 marginPagesDisplayed={1}//số trang hiển thị bên trái và phải của trang đang chọn
                                 pageCount={pageCount}//tổng số trang
                                 onPageChange={handlePageChange}//khi click sang trang xác sẽ xử lý

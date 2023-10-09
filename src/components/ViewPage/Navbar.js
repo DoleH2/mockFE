@@ -240,7 +240,7 @@ const Navbar = () => {
                   </button>
                 ) :
                 (
-                  <button className="btn mx-2 d-flex align-items-center justify-content-center me-auto ms-0 p-0 mx-sm-auto mx-lg-2 mt-2"
+                  <button className="btn mx-2 d-flex align-items-center justify-content-center me-auto ms-0 p-0 mx-sm-auto mx-lg-2 ms-lg-3"
                     onClick={() => changeRouter("/management")}
                   >
                     <div className="avt-user bg-white rounded-pill d-flex align-items-center justify-content-center fw-bold" style={{ width: '40px', height: '40px' }}>{JSON.parse(localStorage.userInfor).sub[0]}</div>
