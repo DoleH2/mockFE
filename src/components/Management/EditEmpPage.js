@@ -234,7 +234,7 @@ const EditEmpPage = () => {
                     {...register("password", {
                       maxLength: { value: 50, message: "Toi da 50 ki tu" },
                       pattern: {
-                        value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
+                        value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$/,
                         message:
                           "Ít nhất 1 chữ hoa, 1 chữ thường và 1 số. Độ dài ít nhất 8 kí tự",
                       },
@@ -261,7 +261,7 @@ const EditEmpPage = () => {
                     {...register("repassword", {
                       maxLength: { value: 50, message: "Toi da 50 ki tu" },
                       pattern: {
-                        value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
+                        value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$/,
                         message:
                           "Ít nhất 1 chữ hoa, 1 chữ thường và 1 số. Độ dài ít nhất 8 kí tự",
                       },
