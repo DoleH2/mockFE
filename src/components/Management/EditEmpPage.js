@@ -127,11 +127,11 @@ const EditEmpPage = () => {
                   id="tenNhanVien"
                   name="tenNhanVien"
                   style={{ maxWidth: "500px", background: "#F8FAFC" }}
+                  placeholder="Nhập tên nhân viên"
                   className="form-control"
                   {...register("tenNhanVien", {
                     required: { value: true, message: configMes.REQ },
-                    maxLength: { value: 50, message: 'Tối đa 50 kí tự' },
-                    pattern: { value: /^[A-Za-z\s]{1,}$/, message: configMes.HO_TEN }
+                    maxLength: { value: 50, message: 'Tối đa 50 kí tự' }
                   })}
                 />
                 {errors.tenNhanVien && (
@@ -222,12 +222,13 @@ const EditEmpPage = () => {
               <div className="frame-pass-input d-flex justify-content-between gap-2">
                 <div className="frame-input mb-2 w-50">
                   <label htmlFor="password" className="fs-6 fw-bold">
-                    New Password
+                    Password<span className="fw-normal ms-1" style={{fontSize:'0.8rem'}}>(bỏ trống nếu không đổi)</span>
                   </label>
                   <input
                     type="password"
                     id="password"
                     style={{ maxWidth: "500px", background: "#F8FAFC" }}
+                    placeholder="Nhập mật khẩu mới"
                     className="form-control"
                     {...register("password", {
                       maxLength: { value: 20, message: "Toi da 20 ki tu" },
@@ -254,6 +255,7 @@ const EditEmpPage = () => {
                     type="password"
                     id="repassword"
                     name="repassword"
+                    placeholder="Nhập lại mật khẩu mới"
                     style={{ maxWidth: "500px", background: "#F8FAFC" }}
                     className="form-control"
                     {...register("repassword", {

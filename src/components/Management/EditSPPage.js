@@ -139,17 +139,15 @@ const EditSPPage = () => {
                 <label htmlFor="tenSanPham" className="fs-6 fw-bold">
                   Tên Sản Phẩm<span className="text-danger ms-1">*</span>
                 </label>
-                {/* lưu ý đặt name giống với key trong file json */}
                 <input
                   type="text"
                   id="tenSanPham"
                   name="tenSanPham"
                   style={{ maxWidth: "500px", background: "#F8FAFC" }}
                   className="form-control"
-                  // lưu ý đặt biến sau ...register("key trong json")
+                  placeholder="Nhập tên sản phẩm"
                   {...register("tenSanPham", {
                     required: { value: true, message: configMes.REQ },
-                    pattern: { value: /^[a-zA-Z0-9 ]{0,}$/, message: 'Chỉ chứa kí tự chữ cái không dấu, số và khoảng trắng' },
                     maxLength: { value: 50, message: 'Tối đa 50 kí tự' }
                   })}
                 />
@@ -166,14 +164,12 @@ const EditSPPage = () => {
                   <label htmlFor="imgUrl" className="fs-6 fw-bold">
                     Ảnh
                   </label>
-                  {/* lưu ý đặt name giống với key trong file json */}
                   <input
                     type="file"
                     id="imgUrl"
                     name="imgUrl"
                     style={{ maxWidth: "500px", background: "#F8FAFC" }}
                     className="form-control"
-                    // lưu ý đặt biến sau ...register("key trong json")
                     {...register("imgUrl", {
                       maxLength: { value: 300, message: 'Tên ảnh quá dài, tối đa 300 kí tự' }
                     })}
@@ -205,14 +201,13 @@ const EditSPPage = () => {
                   <label htmlFor="ram" className="fs-6 fw-bold">
                     RAM<span className="text-danger ms-1">*</span>
                   </label>
-                  {/* lưu ý đặt name giống với key trong file json */}
                   <input
                     type="text"
                     id="ram"
                     name="ram"
                     style={{ maxWidth: "500px", background: "#F8FAFC" }}
                     className="form-control"
-                    // lưu ý đặt biến sau ...register("key trong json")
+                    placeholder="Nhập ram"
                     {...register("ram", {
                       required: { value: true, message: configMes.REQ },
                       pattern: { value: /^[0-9]{1,}GB$/, message: 'Format : [0-9]GB' },
@@ -230,14 +225,13 @@ const EditSPPage = () => {
                   <label htmlFor="cpu" className="fs-6 fw-bold">
                     CPU<span className="text-danger ms-1">*</span>
                   </label>
-                  {/* lưu ý đặt name giống với key trong file json */}
                   <input
                     type="text"
                     id="cpu"
                     name="cpu"
                     style={{ maxWidth: "500px", background: "#F8FAFC" }}
                     className="form-control"
-                    // lưu ý đặt biến sau ...register("key trong json")
+                    placeholder="Nhập cpu"
                     {...register("cpu", {
                       required: { value: true, message: configMes.REQ },
                       pattern: { value: /^[a-zA-Z0-9 ]{0,}$/, message: 'Chỉ chứa kí tự chữ cái không dấu, số và khoảng trắng' },
@@ -257,14 +251,13 @@ const EditSPPage = () => {
                   <label htmlFor="camera" className="fs-6 fw-bold">
                     Camera<span className="text-danger ms-1">*</span>
                   </label>
-                  {/* lưu ý đặt name giống với key trong file json */}
                   <input
                     type="text"
                     id="camera"
                     name="camera"
                     style={{ maxWidth: "500px", background: "#F8FAFC" }}
                     className="form-control"
-                    // lưu ý đặt biến sau ...register("key trong json")
+                    placeholder="Nhập camera"
                     {...register("camera", {
                       required: { value: true, message: configMes.REQ },
                       pattern: { value: /^[0-9]{1,}MP$/, message: 'Format : [0-9]MP' },
@@ -284,14 +277,13 @@ const EditSPPage = () => {
                   <label htmlFor="mauSac" className="fs-6 fw-bold">
                     Màu Sắc<span className="text-danger ms-1">*</span>
                   </label>
-                  {/* lưu ý đặt name giống với key trong file json */}
                   <input
                     type="text"
                     id="mauSac"
                     name="mauSac"
                     style={{ maxWidth: "500px", background: "#F8FAFC" }}
                     className="form-control"
-                    // lưu ý đặt biến sau ...register("key trong json")
+                    placeholder="Nhập màu sắc"
                     {...register("mauSac", {
                       required: { value: true, message: configMes.REQ },
                       pattern: { value: /^[a-zA-Z0-9 ]{0,}$/, message: 'Chỉ chứa kí tự chữ cái không dấu, số và khoảng trắng' },
@@ -313,14 +305,13 @@ const EditSPPage = () => {
                   <label htmlFor="nhanHang" className="fs-6 fw-bold">
                     Nhãn Hàng<span className="text-danger ms-1">*</span>
                   </label>
-                  {/* lưu ý đặt name giống với key trong file json */}
                   <input
                     type="text"
                     id="nhanHang"
                     name="nhanHang"
                     style={{ maxWidth: "500px", background: "#F8FAFC" }}
                     className="form-control"
-                    // lưu ý đặt biến sau ...register("key trong json")
+                    placeholder="Nhập nhãn hàng"
                     {...register("nhanHang", {
                       required: { value: true, message: configMes.REQ },
                       pattern: { value: /^[a-zA-Z0-9 ]{0,}$/, message: 'Chỉ chứa kí tự chữ cái không dấu, số và khoảng trắng' },
@@ -340,14 +331,13 @@ const EditSPPage = () => {
                   <label htmlFor="boNhoTrong" className="fs-6 fw-bold">
                     Bộ nhớ<span className="text-danger ms-1">*</span>
                   </label>
-                  {/* lưu ý đặt name giống với key trong file json */}
                   <input
                     type="text"
                     id="boNhoTrong"
                     name="boNhoTrong"
                     style={{ maxWidth: "500px", background: "#F8FAFC" }}
                     className="form-control"
-                    // lưu ý đặt biến sau ...register("key trong json")
+                    placeholder="Nhập bộ nhớ trong"
                     {...register("boNhoTrong", {
                       required: { value: true, message: configMes.REQ },
                       pattern: { value: /^[0-9]{1,}GB$/, message: 'Format [0-9]GB' },
@@ -369,14 +359,13 @@ const EditSPPage = () => {
                   <label htmlFor="giaVon" className="fs-6 fw-bold">
                     Giá Vốn<span className="text-danger ms-1">*</span>
                   </label>
-                  {/* lưu ý đặt name giống với key trong file json */}
                   <input
                     type="text"
                     id="giaVon"
                     name="giaVon"
                     style={{ maxWidth: "500px", background: "#F8FAFC" }}
                     className="form-control"
-                    // lưu ý đặt biến sau ...register("key trong json")
+                    placeholder="Nhập giá vốn"
                     {...register("giaVon", {
                       required: { value: true, message: 'Vui lòng điền trường này' },
                       min: { value: 1, message: 'Nhỏ nhất là 1' },
@@ -396,14 +385,13 @@ const EditSPPage = () => {
                   <label htmlFor="giaNiemYet" className="fs-6 fw-bold">
                     Giá Bán<span className="text-danger ms-1">*</span>
                   </label>
-                  {/* lưu ý đặt name giống với key trong file json */}
                   <input
                     type="text"
                     id="giaNiemYet"
                     name="giaNiemYet"
                     style={{ maxWidth: "500px", background: "#F8FAFC" }}
                     className="form-control"
-                    // lưu ý đặt biến sau ...register("key trong json")
+                    placeholder="Nhập giá bán"
                     {...register("giaNiemYet", {
                       required: { value: true, message: 'Vui lòng điền trường này' },
                       min: { value: 1, message: 'Nhỏ nhất là 1' },

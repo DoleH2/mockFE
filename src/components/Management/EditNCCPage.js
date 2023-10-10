@@ -102,9 +102,9 @@ const EditNCCPage = () => {
                                 <label htmlFor="tenNhaCungCap" className="fs-6 fw-bold">Tên Nhà Cung Cấp<span className="text-danger ms-1">*</span></label>
                                 <input type="text" id="tenNhaCungCap" name="tenNhaCungCap" style={{ maxWidth: '500px', background: '#F8FAFC' }}
                                     className="form-control"
+                                    placeholder="Nhập tên nhà cung cấp"
                                     {...register("tenNhaCungCap", {
                                         required: { value: true, message: configMes.REQ },
-                                        pattern: { value: /^[a-zA-Z0-9 ]{0,}$/, message: 'Chỉ chứa kí tự chữ cái không dấu, số và khoảng trắng' },
                                         maxLength: { value: 50, message: 'Tối đa 50 kí tự' }
                                     })}
                                 />
@@ -116,6 +116,7 @@ const EditNCCPage = () => {
                                 <label htmlFor="email" className="fs-6 fw-bold">Email<span className="text-danger ms-1">*</span></label>
                                 <input type="email" id="email" name="email" style={{ maxWidth: '500px', background: '#F8FAFC' }}
                                     className="form-control"
+                                    placeholder="Nhập email nhà cung cấp"
                                     {...register("email", {
                                         required: { value: true, message: configMes.REQ },
                                         pattern: { value: /^[a-zA-Z0-9._%+-]{5,20}@[a-zA-Z0-9.-]{3,10}\.[a-zA-Z]{3,10}$/, message: 'Email có format abcde@xyz.com' },
@@ -131,6 +132,7 @@ const EditNCCPage = () => {
 
                                 <input type="text" id="soDienThoai" name="soDienThoai" style={{ maxWidth: '500px', background: '#F8FAFC' }}
                                     className="form-control"
+                                    placeholder="Nhập số điện thoại nhà cung cấp"
                                     {...register("soDienThoai", {
                                         pattern: { value: /^09[0-9]{8}$/, message: 'SDT theo format 09xxxxxxxx' },
                                         required: { value: true, message: configMes.REQ }
@@ -146,6 +148,7 @@ const EditNCCPage = () => {
 
                                 <input type="text" id="diaChi" name="diaChi" style={{ maxWidth: '500px', background: '#F8FAFC' }}
                                     className="form-control"
+                                    placeholder="Nhập địa chỉ nhà cung cấp"
                                     {...register("diaChi", {
                                         required: { value: true, message: configMes.REQ },
                                         pattern: { value: /^[a-zA-Z0-9/ ]{1,}$/, message: 'Chỉ chứa chữ cái, khoảng cách, số và dấu /' },

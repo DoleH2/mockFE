@@ -109,9 +109,9 @@ const EditKHPage = () => {
                                 <label htmlFor="tenKhachHang" className="fs-6 fw-bold">Tên Khách Hàng<span className="text-danger ms-1">*</span></label>
                                 <input type="text" id="tenKhachHang" style={{ maxWidth: '500px', background: '#F8FAFC' }}
                                     className="form-control"
+                                    placeholder="Nhập tên khách hàng"
                                     {...register("tenKhachHang", {
                                         required: { value: true, message: configMes.REQ },
-                                        pattern: { value: /^[a-zA-Z0-9 ]{0,}$/, message: 'Chỉ chứa kí tự chữ cái không dấu, số và khoảng trắng' },
                                         maxLength: { value: 50, message: 'Tối đa 50 kí tự' }
                                     })}
                                 />
@@ -180,6 +180,7 @@ const EditKHPage = () => {
                                 <label htmlFor="soDienThoai" className="fs-6 fw-bold">Số Điện Thoại<span className="text-danger ms-1">*</span></label>
                                 <input type="text" id="soDienThoai" name="soDienThoai" style={{ maxWidth: '500px', background: '#F8FAFC' }}
                                     className="form-control"
+                                    placeholder="Nhập số điện thoại khách hàng"
                                     {...register("soDienThoai", {
                                         required:{value:true,message:configMes.REQ},
                                         pattern: { value: /^09[0-9]{8}$/, message: 'SDT theo format 09xxxxxxxx' }
@@ -194,7 +195,7 @@ const EditKHPage = () => {
                                 <button type="submit" style={{ maxWidth: '500px', width: 'fit-content' }}
                                     disabled={!clickSubmit}
                                     className="btn btn-success form-control px-3 py-2 rounded-0"
-                                ><i class="fa-solid fa-pen fa-sm me-2"></i>Update</button>
+                                ><i className="fa-solid fa-pen fa-sm me-2"></i>Update</button>
                             </div>
                         </form>
 

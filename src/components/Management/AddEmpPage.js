@@ -24,12 +24,14 @@ const AddEmpPage = () => {
     const [clickSubmit,setClickSubmit] = useState(true);
     const onSubmit = async (data) => {
         // dung axios gui
+        console.log(data);
         const fetchApi = async () => {
             try {
                 const result = await postRequest(
                     "/admin/register",
                     data
                 );
+                console.log(result);
                 changeRouter("/list-emp",{status:'success',message:'Thêm mới nhân viên, account '+result.maNhanVien});
             } catch (error) {
                 const cloneErr = { ...error.response.data }
@@ -79,11 +81,10 @@ const AddEmpPage = () => {
                                 {/* lưu ý đặt name giống với key trong file json */}
                                 <input type="text" id="tenNhanVien" name="tenNhanVien" style={{ maxWidth: '500px', background: '#F8FAFC' }}
                                     className="form-control"
-                                    // lưu ý đặt biến sau ...register("key trong json")
+                                    placeholder="Nhập tên nhân viên"
                                     {...register("tenNhanVien", {
                                         required: { value: true, message: configMes.REQ },
                                         maxLength: { value: 50, message: 'Toi da 50 ki tu' },
-                                        pattern:{value:/^[A-Za-z\s]{1,}$/, message:configMes.HO_TEN}
                                     })}
                                 />
                                 {errors.tenNhanVien && <p className="text-danger ps-1 m-0">{errors.tenNhanVien.message}</p>}
@@ -151,6 +152,7 @@ const AddEmpPage = () => {
                                 <div className="frame-input mb-2 w-50">
                                     <label htmlFor="password" className="fs-6 fw-bold">Password<span className="text-danger ms-1">*</span></label>
                                     <input type="password" id="password" name="password" style={{ maxWidth: '500px', background: '#F8FAFC' }}
+                                    placeholder="Nhập mật khẩu"
                                         className="form-control"
                                         {...register("password", {
                                             required: { value: true, message: 'Vui lòng điền trường này' },
@@ -165,6 +167,7 @@ const AddEmpPage = () => {
                                 <div className="frame-input mb-1 w-50">
                                     <label htmlFor="repassword" className="fs-6 fw-bold">Re-Password<span className="text-danger ms-1">*</span></label>
                                     <input type="password" id="repassword" name="repassword" style={{ maxWidth: '500px', background: '#F8FAFC' }}
+                                    placeholder="Nhập lại mật khẩu"
                                         className="form-control"
                                         {...register("rePassword", {
                                             required: { value: true, message: 'Vui lòng điền trường này' },

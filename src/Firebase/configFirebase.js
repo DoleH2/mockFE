@@ -29,7 +29,6 @@ const storage = getStorage(app);
  */
 const upImg = (urlFolderStr, img) => {
   const imgRef = ref(storage, urlFolderStr)
-  console.log(img);
   uploadBytes(imgRef, img)
     .then((snapshot) => {
       console.log('Uploaded');

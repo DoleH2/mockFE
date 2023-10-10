@@ -71,3 +71,11 @@ export const validateInfoKHInHDBH = (soDienThoai, tenKhachHang, gioiTinh, ngaySi
     return true;
 }
 
+export const validateDate = (date)=>{
+    const year = new Date(date).getFullYear();
+    if(year > 3000 || year < 1900){
+        return "Số năm phải lớn hơn 1900 và bé hơn 3000";
+    }
+    return true;
+}
+

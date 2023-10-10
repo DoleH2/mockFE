@@ -81,7 +81,7 @@ const Navbar = () => {
           />
         </a>
         <button
-          className="navbar-toggler me-2"
+          className="navbar-toggler me-2 btn btn-dark border border-dark-subtle"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent"
@@ -89,7 +89,8 @@ const Navbar = () => {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span className="navbar-toggler-icon"></span>
+          <i class="fa-solid fa-bars"></i>
+          {/* <span className="navbar-toggler-icon"></span> */}
         </button>
 
         <div
@@ -240,7 +241,7 @@ const Navbar = () => {
                   </button>
                 ) :
                 (
-                  <button className="btn mx-2 d-flex align-items-center justify-content-center me-auto ms-0 p-0 mx-sm-auto mx-lg-2 ms-lg-3"
+                  <button className="btn mx-2 d-flex align-items-center justify-content-center me-auto ms-0 p-0 mx-sm-auto my-sm-2 mx-lg-2 ms-lg-3"
                     onClick={() => changeRouter("/management")}
                   >
                     <div className="avt-user bg-white rounded-pill d-flex align-items-center justify-content-center fw-bold" style={{ width: '40px', height: '40px' }}>{JSON.parse(localStorage.userInfor).sub[0]}</div>
@@ -281,6 +282,7 @@ const Navbar = () => {
                           id="input-acc"
                           style={{ maxWidth: "500px" }}
                           className="form-control"
+                          placeholder="Nhập tên tài khoản"
                           {...register("username", {
                             onChange: (e) => { handleChangeLogin() }
                           })}
@@ -295,6 +297,7 @@ const Navbar = () => {
                           id="input-pass"
                           style={{ maxWidth: "500px" }}
                           className="form-control"
+                          placeholder="Nhập mật khẩu"
                           {...register("password", {
                             onChange: (e) => { handleChangeLogin() }
                           })}

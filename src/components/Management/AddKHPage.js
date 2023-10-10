@@ -83,10 +83,9 @@ const AddKHPage = () => {
                                 {/* lưu ý đặt name giống với key trong file json */}
                                 <input type="text" id="tenKhachHang" name="tenKhachHang" style={{ maxWidth: '500px', background: '#F8FAFC' }}
                                     className="form-control"
-                                    // lưu ý đặt biến sau ...register("key trong json")
+                                    placeholder="Nhập tên khách hàng"
                                     {...register("tenKhachHang", {
                                         required: { value: true, message: configMes.REQ },
-                                        pattern: { value: /^[a-zA-Z0-9 ]{0,}$/, message: 'Chỉ chứa kí tự chữ cái không dấu, số và khoảng trắng' },
                                         maxLength: { value: 50, message: 'Tối đa 50 kí tự' }
                                     })}
                                 />
@@ -156,7 +155,7 @@ const AddKHPage = () => {
                                 {/* lưu ý đặt name giống với key trong file json */}
                                 <input type="text" id="soDienThoai" name="soDienThoai" style={{ maxWidth: '500px', background: '#F8FAFC' }}
                                     className="form-control"
-                                    // lưu ý đặt biến sau ...register("key trong json")
+                                    placeholder="Nhập số điện thoại khách hàng"
                                     {...register("soDienThoai", {
                                         required: { value: true, message: configMes.REQ },
                                         pattern: { value: /^09[0-9]{8}$/, message: 'SDT theo format 09xxxxxxxx' }

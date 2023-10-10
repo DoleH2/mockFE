@@ -214,6 +214,7 @@ const AddHDNHPage = () => {
                                                         <span className="text-danger ms-1">*</span></label>
                                                         <input type="number" id={`chiTietHoaDonNhapHangDTO[${idx}].soLuong`} style={{ maxWidth: '500px' }}
                                                             className="form-control"
+                                                            placeholder="Nhập số lượng"
                                                             {...register("chiTietHoaDonNhapHangDTO[" + idx + "].soLuong", {
                                                                 required: { value: true, message: "Vui lòng nhập số lượng" },
                                                                 min:{value:1,message:"Nhỏ nhất là 1"},

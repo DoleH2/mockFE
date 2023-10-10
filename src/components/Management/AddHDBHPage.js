@@ -1,6 +1,6 @@
 import MenuSide from "./MenuSide";
 import { useForm } from "react-hook-form";
-import { configMes, validateInfoKHInHDBH } from "../../Validate/validateEmp";
+import { configMes, validateDate, validateInfoKHInHDBH } from "../../Validate/validateEmp";
 import { useNavigate } from "react-router-dom";
 import { getRequest, postRequest } from "../../axios/httpRequest";
 import { useEffect, useState } from "react";
@@ -205,7 +205,6 @@ const AddHDBHPage = () => {
     setOnCheck(true);
   };
   //end sdt kh
-
   // end xử lý form
   return (
     <div className="container-fluid p-0 d-flex bg-white">
@@ -283,7 +282,6 @@ const AddHDBHPage = () => {
                       : true
                   }
                   {...register("tenKhachHang", {
-                    pattern: { value: /^[a-zA-Z ]{1,}$/ },
                     max: { value: 50, message: 'Tối đa 50 kí tự' }
                   })}
                 />
@@ -344,6 +342,7 @@ const AddHDBHPage = () => {
                       dataKHSelect[0].ngaySinh === "" && onCheck ? false : true
                     }
                     {...register("ngaySinh", {
+                      validate:(value)=>validateDate(value)
                     })}
                   />
                   <div className="mb-3">
@@ -385,7 +384,7 @@ const AddHDBHPage = () => {
                       <div className="d-flex gap-2">
                         <div
                           className="frame-input mb-2"
-                          style={{ width: "35%" }}
+                          style={{ width: "25%" }}
                         >
                           <label
                             htmlFor={
@@ -415,7 +414,7 @@ const AddHDBHPage = () => {
                               }
                             )}
                           >
-                            <option value="">---Chọn Sản Phẩm---</option>
+                            <option value="">---Sản Phẩm---</option>
                             {listSP.map((sp, idx) => (
                               <option key={idx} value={sp.maSanPham}>
                                 {sp.tenSanPham}
@@ -436,8 +435,8 @@ const AddHDBHPage = () => {
                         </div>
 
                         <div
-                          className="frame-input mb-2"
-                          style={{ width: "40%" }}
+                          className="frame-input mb-2 w-25"
+                          style={{ width: "25%" }}
                         >
                           <label
                             htmlFor={`chiTietHoaDonBanHang[${idx}].giaNiemYetHienTai`}
@@ -485,6 +484,7 @@ const AddHDBHPage = () => {
                           <input
                             type="number"
                             id={`chiTietHoaDonBanHang[${idx}].soLuong`}
+                            placeholder="Nhập số lượng"
                             style={{ maxWidth: "500px" }}
                             className="form-control"
                             {...register(
@@ -536,6 +536,7 @@ const AddHDBHPage = () => {
                           </label>
                           <input
                             type="number"
+                            placeholder="Nhập giá bán"
                             id={`chiTietHoaDonBanHang[${idx}].giaBanThuc`}
                             style={{ maxWidth: "500px" }}
                             className="form-control"

@@ -45,8 +45,14 @@ html{
     transition: opacity .5s;
 }
 .navbar-toggler{
-    background-color: grey !important;
-    color: white !important;
+    width: 45px;
+    height: 40px;
+}
+.navbar-toggler:hover i{
+    color: white;
+}
+.navbar-toggler i{
+    color: rgb(148, 148, 148);
 }
 .banner-items-small{
     display: flex;
