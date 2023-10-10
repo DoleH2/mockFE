@@ -125,7 +125,7 @@ const EditPassEmpPage = () => {
                     required:{value:true,message:configMes.REQ},
                     maxLength: { value: 20, message: "Toi da 20 ki tu" },
                     pattern: {
-                      value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$/,
+                      value: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/,
                       message:
                         "Ít nhất 1 chữ hoa, 1 chữ thường và 1 số. Độ dài ít nhất 8 kí tự",
                     },
