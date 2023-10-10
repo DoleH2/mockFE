@@ -105,6 +105,7 @@ const EditNCCPage = () => {
                                     placeholder="Nhập tên nhà cung cấp"
                                     {...register("tenNhaCungCap", {
                                         required: { value: true, message: configMes.REQ },
+                                        pattern:{value:/^[a-zA-Z0-9 ]/,message:configMes.HO_TEN},
                                         maxLength: { value: 50, message: 'Tối đa 50 kí tự' }
                                     })}
                                 />

@@ -282,6 +282,7 @@ const AddHDBHPage = () => {
                       : true
                   }
                   {...register("tenKhachHang", {
+                    pattern:{value:/^[a-zA-Z0-9 ]/,message:configMes.HO_TEN},
                     max: { value: 50, message: 'Tối đa 50 kí tự' }
                   })}
                 />

@@ -89,7 +89,7 @@ const Navbar = () => {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <i class="fa-solid fa-bars"></i>
+          <i className="fa-solid fa-bars"></i>
           {/* <span className="navbar-toggler-icon"></span> */}
         </button>
 

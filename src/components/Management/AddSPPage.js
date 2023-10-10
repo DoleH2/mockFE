@@ -85,6 +85,7 @@ const AddSPPage = () => {
                                     placeholder="Nhập tên sản phẩm"
                                     {...register("tenSanPham", {
                                         required: { value: true, message: configMes.REQ },
+                                        pattern:{value:/^[a-zA-Z0-9 ]/,message:configMes.HO_TEN},
                                         maxLength: { value: 50, message: 'Tối đa 50 kí tự' }
 
                                     })}

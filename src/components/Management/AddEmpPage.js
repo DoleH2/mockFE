@@ -84,6 +84,7 @@ const AddEmpPage = () => {
                                     placeholder="Nhập tên nhân viên"
                                     {...register("tenNhanVien", {
                                         required: { value: true, message: configMes.REQ },
+                                        pattern:{value:/^[a-zA-Z0-9 ]/,message:configMes.HO_TEN},
                                         maxLength: { value: 50, message: 'Toi da 50 ki tu' },
                                     })}
                                 />

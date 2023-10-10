@@ -217,6 +217,7 @@ const ListNVPage = () => {
                                     }
                                     {
                                         dataDisplay.map((emp, idx) => (
+                                            
                                             <tr key={idx}>
                                                 <td style={{ width: '5%', minWidth: '50px', maxWidth: '100px' }}>{idx}</td>
                                                 <td>{emp.maNhanVien}</td>
@@ -226,7 +227,7 @@ const ListNVPage = () => {
                                                 <td style={{ width: '10%', minWidth: '100px', maxWidth: '150px' }}>
                                                     <div className="d-flex gap-2">
                                                         <a className="btn btn-light border text-success border-0"
-                                                            onClick={() => { changeRouter('/edit-emp/' + emp.maNhanVien, emp) }}
+                                                            onClick={() => { changeRouter("/edit-emp/"+emp.maNhanVien, emp) }}
                                                         >
                                                             <i className="fa-regular fa-pen-to-square"></i>
                                                         </a>

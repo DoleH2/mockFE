@@ -12,7 +12,8 @@ import { putRequest } from "../../axios/httpRequest";
 import { useEffect, useState } from "react";
 import Toast from "../utils/Toast";
 import { configMes, validateGioiTinh, validateRepassword } from "../../Validate/validateEmp";
-const EditEmpPage = () => {
+const EditPassEmpPage = () => {
+
   // xử lý chuyển trang sang url khác
   let navigate = useNavigate();
   const changeRouter = (path, data) => {
@@ -21,32 +22,22 @@ const EditEmpPage = () => {
   // end xử lý chuyển trang
   const location = useLocation();
   const dataDefault = location.state;
-
   useEffect(() => {
-    setValue("maNhanVien", dataDefault.maNhanVien)
-    setValue("tenNhanVien", dataDefault.tenNhanVien)
-    setValue("ngaySinh", dataDefault.ngaySinh)
-    setValue("gioiTinh", dataDefault.gioiTinh)
+    setValue("maNhanVien", dataDefault)
   }, [])
 
   const { register, handleSubmit, formState: { errors }, watch, setValue, setError } = useForm();
-  const password = watch("password","");
-  const gender = watch("gioiTinh", "");
+  const password = watch("password", "");
   const [toastStatus, setToastStatus] = useState({ status: '', message: '' });
   const [clickSubmit, setClickSubmit] = useState(true);
   const onSubmit = async (data) => {
     setClickSubmit(false);
-    if (data.password === "") {
-      data.password = dataDefault.password;
-    }
-    delete data["repassword"];
-    console.log(dataDefault);
-    console.log(data);
     // dung axios gui
+    console.log(data);
     const fetchApi = async () => {
       try {
         const result = await putRequest("/admin/nhan_vien", data);
-        changeRouter("/list-emp", { status: 'success', message: 'Cập nhật nhân viên thành công, account ' + result.maNhanVien });
+        changeRouter("/list-emp", { status: 'success', message: 'Cập nhật mật khẩu thành công, account ' + result.maNhanVien });
       } catch (error) {
         const cloneErr = { ...error.response.data }
         await setErrorField(cloneErr);
@@ -93,7 +84,7 @@ const EditEmpPage = () => {
           </button>
           {/* end button back */}
           <div className="title-body justify-content-center border-bottom d-flex">
-            <p className="fs-4 mb-2">Edit Nhân Viên</p>
+            <p className="fs-4 mb-2">Edit Password Nhân Viên</p>
           </div>
           <div
             className="container frame-input m-0 rounded px-2 py-1"
@@ -118,120 +109,67 @@ const EditEmpPage = () => {
                 />
               </div>
               {/* end frame-input */}
-              {/* frame-input */}
-              <div className="frame-input mb-2">
-                <label htmlFor="tenNhanVien" className="fs-6 fw-bold">
-                  Tên NV<span className="text-danger ms-1">*</span>
+
+              {/* frame-input password vs repassword */}
+              <div className="frame-input mb-2 w-100">
+                <label htmlFor="password" className="fs-6 fw-bold">
+                  Password<span className="text-danger ms-1">*</span>
                 </label>
                 <input
-                  type="text"
-                  id="tenNhanVien"
-                  name="tenNhanVien"
+                  type="password"
+                  id="password"
                   style={{ maxWidth: "500px", background: "#F8FAFC" }}
-                  placeholder="Nhập tên nhân viên"
+                  placeholder="Nhập mật khẩu mới"
                   className="form-control"
-                  {...register("tenNhanVien", {
-                    required: { value: true, message: configMes.REQ },
-                    pattern:{value:/^[a-zA-Z0-9 ]/,message:configMes.HO_TEN},
-                    maxLength: { value: 50, message: 'Tối đa 50 kí tự' }
+                  {...register("password", {
+                    required:{value:true,message:configMes.REQ},
+                    maxLength: { value: 20, message: "Toi da 20 ki tu" },
+                    pattern: {
+                      value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$/,
+                      message:
+                        "Ít nhất 1 chữ hoa, 1 chữ thường và 1 số. Độ dài ít nhất 8 kí tự",
+                    },
                   })}
                 />
-                {errors.tenNhanVien && (
+                {errors.password && (
                   <p className="text-danger ps-1 m-0">
-                    {errors.tenNhanVien.message}
+                    {errors.password.message}
                   </p>
                 )}
               </div>
               {/* end frame-input */}
               {/* frame-input */}
-              <div className="frame-input mb-2">
-                <label htmlFor="ngaySinh" className="fs-6 fw-bold">
-                  Ngày Sinh<span className="text-danger ms-1">*</span>
+              <div className="frame-input mb-2 w-100">
+                <label htmlFor="rePassword" className="fs-6 fw-bold">
+                  Re-Password<span className="text-danger ms-1">*</span>
                 </label>
-
                 <input
-                  type="date"
-                  id="ngaySinh"
-                  name="ngaySinh"
+                  type="password"
+                  id="repassword"
+                  name="repassword"
+                  placeholder="Nhập lại mật khẩu mới"
                   style={{ maxWidth: "500px", background: "#F8FAFC" }}
                   className="form-control"
-                  {...register("ngaySinh", {
-                    required:{value:true,message:configMes.REQ}
+                  {...register("repassword", {
+                    required:{value:true,message:configMes.REQ},
+                    validate: (value) => validateRepassword(password, value),
                   })}
                 />
-                {errors.ngaySinh && (
+                {errors.repassword && (
                   <p className="text-danger ps-1 m-0">
-                    {errors.ngaySinh.message}
+                    {errors.repassword.message}
                   </p>
                 )}
               </div>
               {/* end frame-input */}
 
-              {/* frame-input */}
-              <div className="frame-input mb-2 d-flex flex-wrap gap-1">
-                <label htmlFor="gioiTinh" className="fs-6 fw-bold w-100">
-                  Giới Tính<span className="text-danger ms-1">*</span>
-                </label>
-
-                <div className="frame-radio d-flex gap-1 me-1">
-                  <input
-                    type="radio"
-                    id="nam"
-                    value="Nam"
-                    style={{ maxWidth: "500px", background: "#F8FAFC" }}
-                    className="d-block"
-                    {...register("gioiTinh", {
-                      validate: validateGioiTinh(gender),
-                    })}
-                  />
-                  <label htmlFor="nam">Nam</label>
-                </div>
-                <div className="frame-radio d-flex gap-1 me-1">
-                  <input
-                    type="radio"
-                    id="nu"
-                    value="Nu"
-                    style={{ maxWidth: "500px", background: "#F8FAFC" }}
-                    className="d-block"
-                    {...register("gioiTinh", {
-                      validate: validateGioiTinh(gender),
-                    })}
-                  />
-                  <label htmlFor="nu">Nu</label>
-                </div>
-                <div className="frame-radio d-flex gap-1 me-1">
-                  <input
-                    type="radio"
-                    id="khac"
-                    value="Khac"
-                    style={{ maxWidth: "500px", background: "#F8FAFC" }}
-                    className="d-block"
-                    {...register("gioiTinh", {
-                      validate: validateGioiTinh(gender),
-                    })}
-                  />
-                  <label htmlFor="khac">Khac</label>
-                </div>
-                {errors.gioiTinh && (
-                  <p className="text-danger ps-1 w-100 m-0">
-                    {errors.gioiTinh.message}
-                  </p>
-                )}
-              </div>
-              {/* end frame-input */}
-
-              <div className="frame-input my-2 mt-4 d-flex justify-content-between">
+              <div className="frame-input my-2 mt-4">
                 <button
                   type="submit" disabled={!clickSubmit}
                   style={{ maxWidth: "500px", width: "fit-content" }}
                   className="btn btn-success form-control px-3 py-2 rounded-0"
                 >
                   <i className="fa-solid fa-pen fa-sm me-2"></i>Update
-                </button>
-                <button type="button" className="btn text-primary"
-                  onClick={()=>{changeRouter("/editpss-emp/"+dataDefault.maNhanVien,dataDefault.maNhanVien)}}
-                >
-                  Change password
                 </button>
               </div>
             </form>
@@ -248,4 +186,4 @@ const EditEmpPage = () => {
   );
 };
 
-export default EditEmpPage;
+export default EditPassEmpPage;

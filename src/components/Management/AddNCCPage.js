@@ -81,6 +81,7 @@ const AddNCCPage = () => {
                                     placeholder="Nhập tên nhà cung cấp"
                                     {...register("tenNhaCungCap", {
                                         required: { value: true, message: configMes.REQ },
+                                        pattern:{value:/^[a-zA-Z0-9 ]/,message:configMes.HO_TEN},
                                         maxLength: { value: 50, message: 'Toi da 50 ki tu' }
                                     })}
                                 />
@@ -128,7 +129,7 @@ const AddNCCPage = () => {
                                     placeholder="Nhập địa chỉ nhà cung cấp"
                                     {...register("diaChi", {
                                         required: { value: true, message: configMes.REQ },
-                                        pattern: { value: /^[a-zA-Z0-9/ ]{1,}$/, message: 'Chỉ chứa chữ cái, khoảng cách, số và dấu /' },
+                                        pattern: { value: /^[a-zA-Z0-9 ]{1,}$/, message: 'Chỉ chứa chữ cái, khoảng cách, số và dấu /' },
                                         maxLength: { value: 100, message: 'Tối đa 100 kí tự' }
                                     })}
                                 />

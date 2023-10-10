@@ -30,6 +30,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
 import ErrorPage from "./components/utils/ErrorPage";
 import Guard from "./components/Management/Guard";
+import EditPassEmpPage from "./components/Management/EditPassEmpPage";
 
 function App() {
   return (
@@ -57,6 +58,14 @@ function App() {
         element={
           <Guard condition={[1]}>
             <AddEmpPage />
+          </Guard>
+        }
+      />
+      <Route
+        path="/editpss-emp/:id"
+        element={
+          <Guard condition={[1]}>
+            <EditPassEmpPage/>
           </Guard>
         }
       />
