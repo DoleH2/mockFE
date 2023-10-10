@@ -145,19 +145,18 @@ const EditPassEmpPage = () => {
                 </label>
                 <input
                   type="password"
-                  id="repassword"
-                  name="repassword"
+                  id="rePassword"
                   placeholder="Nhập lại mật khẩu mới"
                   style={{ maxWidth: "500px", background: "#F8FAFC" }}
                   className="form-control"
-                  {...register("repassword", {
+                  {...register("rePassword", {
                     required:{value:true,message:configMes.REQ},
                     validate: (value) => validateRepassword(password, value),
                   })}
                 />
-                {errors.repassword && (
+                {errors.rePassword && (
                   <p className="text-danger ps-1 m-0">
-                    {errors.repassword.message}
+                    {errors.rePassword.message}
                   </p>
                 )}
               </div>
