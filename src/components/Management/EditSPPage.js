@@ -137,7 +137,7 @@ const EditSPPage = () => {
               {/* frame-input */}
               <div className="frame-input mb-2">
                 <label htmlFor="tenSanPham" className="fs-6 fw-bold">
-                  Tên Sản Phẩm
+                  Tên Sản Phẩm<span className="text-danger ms-1">*</span>
                 </label>
                 {/* lưu ý đặt name giống với key trong file json */}
                 <input
@@ -203,7 +203,7 @@ const EditSPPage = () => {
                 {/* frame-input */}
                 <div className="frame-input mb-2 w-50">
                   <label htmlFor="ram" className="fs-6 fw-bold">
-                    RAM
+                    RAM<span className="text-danger ms-1">*</span>
                   </label>
                   {/* lưu ý đặt name giống với key trong file json */}
                   <input
@@ -228,7 +228,7 @@ const EditSPPage = () => {
                 {/* frame-input */}
                 <div className="frame-input mb-2 w-50">
                   <label htmlFor="cpu" className="fs-6 fw-bold">
-                    CPU
+                    CPU<span className="text-danger ms-1">*</span>
                   </label>
                   {/* lưu ý đặt name giống với key trong file json */}
                   <input
@@ -255,7 +255,7 @@ const EditSPPage = () => {
                 {/* frame-input */}
                 <div className="frame-input mb-2 w-50">
                   <label htmlFor="camera" className="fs-6 fw-bold">
-                    Camera
+                    Camera<span className="text-danger ms-1">*</span>
                   </label>
                   {/* lưu ý đặt name giống với key trong file json */}
                   <input
@@ -282,7 +282,7 @@ const EditSPPage = () => {
                 {/* frame-input */}
                 <div className="frame-input mb-2 w-50">
                   <label htmlFor="mauSac" className="fs-6 fw-bold">
-                    Màu Sắc
+                    Màu Sắc<span className="text-danger ms-1">*</span>
                   </label>
                   {/* lưu ý đặt name giống với key trong file json */}
                   <input
@@ -311,7 +311,7 @@ const EditSPPage = () => {
                 {/* frame-input */}
                 <div className="frame-input mb-2 w-50">
                   <label htmlFor="nhanHang" className="fs-6 fw-bold">
-                    Nhãn Hàng
+                    Nhãn Hàng<span className="text-danger ms-1">*</span>
                   </label>
                   {/* lưu ý đặt name giống với key trong file json */}
                   <input
@@ -338,7 +338,7 @@ const EditSPPage = () => {
                 {/* frame-input */}
                 <div className="frame-input mb-2 w-50">
                   <label htmlFor="boNhoTrong" className="fs-6 fw-bold">
-                    Bộ nhớ
+                    Bộ nhớ<span className="text-danger ms-1">*</span>
                   </label>
                   {/* lưu ý đặt name giống với key trong file json */}
                   <input
@@ -367,7 +367,7 @@ const EditSPPage = () => {
                 {/* frame-input */}
                 <div className="frame-input mb-2 w-50">
                   <label htmlFor="giaVon" className="fs-6 fw-bold">
-                    Giá Vốn
+                    Giá Vốn<span className="text-danger ms-1">*</span>
                   </label>
                   {/* lưu ý đặt name giống với key trong file json */}
                   <input
@@ -379,7 +379,7 @@ const EditSPPage = () => {
                     // lưu ý đặt biến sau ...register("key trong json")
                     {...register("giaVon", {
                       required: { value: true, message: 'Vui lòng điền trường này' },
-                      min: { value: 0, message: 'Nhỏ nhất là 0' },
+                      min: { value: 1, message: 'Nhỏ nhất là 1' },
                       max: { value: 1000000000, message: 'Lớn nhất là 1,000,000,000' }
                     })}
                   />
@@ -394,7 +394,7 @@ const EditSPPage = () => {
                 {/* frame-input */}
                 <div className="frame-input mb-2 w-50">
                   <label htmlFor="giaNiemYet" className="fs-6 fw-bold">
-                    Giá Bán
+                    Giá Bán<span className="text-danger ms-1">*</span>
                   </label>
                   {/* lưu ý đặt name giống với key trong file json */}
                   <input
@@ -406,7 +406,7 @@ const EditSPPage = () => {
                     // lưu ý đặt biến sau ...register("key trong json")
                     {...register("giaNiemYet", {
                       required: { value: true, message: 'Vui lòng điền trường này' },
-                      min: { value: 0, message: 'Nhỏ nhất là 0' },
+                      min: { value: 1, message: 'Nhỏ nhất là 1' },
                       max: { value: 1000000000, message: 'Lớn nhất là 1,000,000,000' }
                     })}
                   />

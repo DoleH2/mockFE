@@ -11,7 +11,7 @@ import { useForm } from "react-hook-form";
 import { putRequest } from "../../axios/httpRequest";
 import { useEffect, useState } from "react";
 import Toast from "../utils/Toast";
-import { configMes, validateGioiTinh } from "../../Validate/validateEmp";
+import { configMes, validateGioiTinh, validateRepassword } from "../../Validate/validateEmp";
 const EditEmpPage = () => {
   // xử lý chuyển trang sang url khác
   let navigate = useNavigate();
@@ -29,17 +29,18 @@ const EditEmpPage = () => {
   }, [])
 
   const { register, handleSubmit, formState: { errors }, watch, setValue, setError } = useForm();
-  const password = watch("matKhau", "");
+  const password = watch("password","");
   const gender = watch("gioiTinh", "");
   const [toastStatus, setToastStatus] = useState({ status: '', message: '' });
   const [clickSubmit, setClickSubmit] = useState(true);
   const onSubmit = async (data) => {
     setClickSubmit(false);
-    if (data.matKhau === "") {
-      data.matKhau = dataDefault.matKhau;
+    if (data.password === "") {
+      data.password = dataDefault.password;
     }
     delete data["repassword"];
-
+    console.log(dataDefault);
+    console.log(data);
     // dung axios gui
     const fetchApi = async () => {
       try {
@@ -119,7 +120,7 @@ const EditEmpPage = () => {
               {/* frame-input */}
               <div className="frame-input mb-2">
                 <label htmlFor="tenNhanVien" className="fs-6 fw-bold">
-                  Tên NV
+                  Tên NV<span className="text-danger ms-1">*</span>
                 </label>
                 <input
                   type="text"
@@ -143,7 +144,7 @@ const EditEmpPage = () => {
               {/* frame-input */}
               <div className="frame-input mb-2">
                 <label htmlFor="ngaySinh" className="fs-6 fw-bold">
-                  Ngày Sinh
+                  Ngày Sinh<span className="text-danger ms-1">*</span>
                 </label>
 
                 <input
@@ -153,7 +154,7 @@ const EditEmpPage = () => {
                   style={{ maxWidth: "500px", background: "#F8FAFC" }}
                   className="form-control"
                   {...register("ngaySinh", {
-
+                    required:{value:true,message:configMes.REQ}
                   })}
                 />
                 {errors.ngaySinh && (
@@ -167,7 +168,7 @@ const EditEmpPage = () => {
               {/* frame-input */}
               <div className="frame-input mb-2 d-flex flex-wrap gap-1">
                 <label htmlFor="gioiTinh" className="fs-6 fw-bold w-100">
-                  Giới Tính
+                  Giới Tính<span className="text-danger ms-1">*</span>
                 </label>
 
                 <div className="frame-radio d-flex gap-1 me-1">
@@ -175,7 +176,6 @@ const EditEmpPage = () => {
                     type="radio"
                     id="nam"
                     value="Nam"
-                    name="gioiTinh"
                     style={{ maxWidth: "500px", background: "#F8FAFC" }}
                     className="d-block"
                     {...register("gioiTinh", {
@@ -189,7 +189,6 @@ const EditEmpPage = () => {
                     type="radio"
                     id="nu"
                     value="Nu"
-                    name="gioiTinh"
                     style={{ maxWidth: "500px", background: "#F8FAFC" }}
                     className="d-block"
                     {...register("gioiTinh", {
@@ -203,7 +202,6 @@ const EditEmpPage = () => {
                     type="radio"
                     id="khac"
                     value="Khac"
-                    name="gioiTinh"
                     style={{ maxWidth: "500px", background: "#F8FAFC" }}
                     className="d-block"
                     {...register("gioiTinh", {
@@ -223,16 +221,16 @@ const EditEmpPage = () => {
               {/* frame-input password vs repassword */}
               <div className="frame-pass-input d-flex justify-content-between gap-2">
                 <div className="frame-input mb-2 w-50">
-                  <label htmlFor="matKhau" className="fs-6 fw-bold">
-                    Password
+                  <label htmlFor="password" className="fs-6 fw-bold">
+                    New Password
                   </label>
                   <input
                     type="password"
-                    id="matKhau"
+                    id="password"
                     style={{ maxWidth: "500px", background: "#F8FAFC" }}
                     className="form-control"
                     {...register("password", {
-                      maxLength: { value: 50, message: "Toi da 50 ki tu" },
+                      maxLength: { value: 20, message: "Toi da 20 ki tu" },
                       pattern: {
                         value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$/,
                         message:
@@ -240,9 +238,9 @@ const EditEmpPage = () => {
                       },
                     })}
                   />
-                  {errors.matKhau && (
+                  {errors.password && (
                     <p className="text-danger ps-1 m-0">
-                      {errors.matKhau.message}
+                      {errors.password.message}
                     </p>
                   )}
                 </div>
@@ -259,13 +257,7 @@ const EditEmpPage = () => {
                     style={{ maxWidth: "500px", background: "#F8FAFC" }}
                     className="form-control"
                     {...register("repassword", {
-                      maxLength: { value: 50, message: "Toi da 50 ki tu" },
-                      pattern: {
-                        value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$/,
-                        message:
-                          "Ít nhất 1 chữ hoa, 1 chữ thường và 1 số. Độ dài ít nhất 8 kí tự",
-                      },
-                      // validate: (value) => validateRepassword(password, value),
+                      validate: (value) => validateRepassword(password, value),
                     })}
                   />
                   {errors.repassword && (
@@ -283,7 +275,7 @@ const EditEmpPage = () => {
                   style={{ maxWidth: "500px", width: "fit-content" }}
                   className="btn btn-success form-control px-3 py-2 rounded-0"
                 >
-                  <i class="fa-solid fa-pen fa-sm me-2"></i>Update
+                  <i className="fa-solid fa-pen fa-sm me-2"></i>Update
                 </button>
               </div>
             </form>

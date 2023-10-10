@@ -142,7 +142,8 @@ const AddHDNHPage = () => {
 
                             {/* frame-input */}
                             <div className="frame-input mb-3 align-items-center">
-                                <label htmlFor="tenKhachHang" className="fs-6 fw-bold w-25">Nhà Cung Cấp</label>
+                                <label htmlFor="tenKhachHang" className="fs-6 fw-bold w-25">Nhà Cung Cấp<span className="text-danger ms-1">*</span>
+                                </label>
 
                                 <select type="text" style={{ maxWidth: '700px' }}
                                     className="form-control"
@@ -182,7 +183,9 @@ const AddHDNHPage = () => {
 
                                                 <div className="d-flex gap-2">
                                                     <div className="frame-input mb-2" style={{ width: '35%' }}>
-                                                        <label htmlFor={"chiTietHoaDonNhapHangDTO[" + idx + "].sanPhamDTO.maSanPham"} className="fs-6 fw-bold">Sản Phẩm</label>
+                                                        <label htmlFor={"chiTietHoaDonNhapHangDTO[" + idx + "].sanPhamDTO.maSanPham"} className="fs-6 fw-bold">
+                                                        Sản Phẩm<span className="text-danger ms-1">*</span>
+                                                        </label>
                                                         <select className="form-control"
                                                             {...register("chiTietHoaDonNhapHangDTO[" + idx + "].sanPhamDTO.maSanPham", {
                                                                 required: { value: true, message: "Vui lòng chọn sản phẩm" },
@@ -206,11 +209,15 @@ const AddHDNHPage = () => {
                                                     </div>
 
                                                     <div className="frame-input mb-2">
-                                                        <label htmlFor={`chiTietHoaDonNhapHangDTO[${idx}].soLuong`} className="fs-6 fw-bold">Số Lượng</label>
+                                                        <label htmlFor={`chiTietHoaDonNhapHangDTO[${idx}].soLuong`} className="fs-6 fw-bold">
+                                                        Số Lượng
+                                                        <span className="text-danger ms-1">*</span></label>
                                                         <input type="number" id={`chiTietHoaDonNhapHangDTO[${idx}].soLuong`} style={{ maxWidth: '500px' }}
                                                             className="form-control"
                                                             {...register("chiTietHoaDonNhapHangDTO[" + idx + "].soLuong", {
                                                                 required: { value: true, message: "Vui lòng nhập số lượng" },
+                                                                min:{value:1,message:"Nhỏ nhất là 1"},
+                                                                max:{value:1000000,message:"Tối đa là 1,000,000"},
                                                                 onChange: (e) => { handleChangeInputCTDH(idx, "soLuong", e.target.value) }
                                                             })}
                                                         />

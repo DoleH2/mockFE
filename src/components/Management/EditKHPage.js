@@ -106,7 +106,7 @@ const EditKHPage = () => {
                             {/* end frame-input */}
                             {/* frame-input */}
                             <div className="frame-input mb-2">
-                                <label htmlFor="tenKhachHang" className="fs-6 fw-bold">Tên Khách Hàng</label>
+                                <label htmlFor="tenKhachHang" className="fs-6 fw-bold">Tên Khách Hàng<span className="text-danger ms-1">*</span></label>
                                 <input type="text" id="tenKhachHang" style={{ maxWidth: '500px', background: '#F8FAFC' }}
                                     className="form-control"
                                     {...register("tenKhachHang", {
@@ -120,12 +120,12 @@ const EditKHPage = () => {
                             {/* end frame-input */}
                             {/* frame-input */}
                             <div className="frame-input mb-2">
-                                <label htmlFor="ngaySinh" className="fs-6 fw-bold">Ngày Sinh</label>
+                                <label htmlFor="ngaySinh" className="fs-6 fw-bold">Ngày Sinh<span className="text-danger ms-1">*</span></label>
 
                                 <input type="date" id="ngaySinh" name="ngaySinh" style={{ maxWidth: '500px', background: '#F8FAFC' }}
                                     className="form-control"
                                     {...register("ngaySinh", {
-
+                                        required:{value:true,message:configMes.REQ}
                                     })}
                                 />
                                 {errors.ngaySinh && <p className="text-danger ps-1 m-0">{errors.ngaySinh.message}</p>}
@@ -134,7 +134,7 @@ const EditKHPage = () => {
 
                             {/* frame-input */}
                             <div className="frame-input mb-2 d-flex flex-wrap gap-1">
-                                <label htmlFor="gioiTinh" className="fs-6 fw-bold w-100">Giới Tính</label>
+                                <label htmlFor="gioiTinh" className="fs-6 fw-bold w-100">Giới Tính<span className="text-danger ms-1">*</span></label>
                                 {/* ô radio */}
                                 <div className="frame-radio d-flex gap-1">
                                     <input type="radio" id="nam"
@@ -177,7 +177,7 @@ const EditKHPage = () => {
                             {/* end frame-input */}
                             {/* frame-input */}
                             <div className="frame-input mb-2">
-                                <label htmlFor="soDienThoai" className="fs-6 fw-bold">Số Điện Thoại</label>
+                                <label htmlFor="soDienThoai" className="fs-6 fw-bold">Số Điện Thoại<span className="text-danger ms-1">*</span></label>
                                 <input type="text" id="soDienThoai" name="soDienThoai" style={{ maxWidth: '500px', background: '#F8FAFC' }}
                                     className="form-control"
                                     {...register("soDienThoai", {

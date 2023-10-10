@@ -78,7 +78,7 @@ const AddSPPage = () => {
                         <form onSubmit={handleSubmit(onSubmit)}>
                             {/* frame-input */}
                             <div className="frame-input mb-2">
-                                <label htmlFor="tenSanPham" className="fs-6 fw-bold">Tên Sản Phẩm</label>
+                                <label htmlFor="tenSanPham" className="fs-6 fw-bold">Tên Sản Phẩm<span className="text-danger ms-1">*</span></label>
                                 {/* lưu ý đặt name giống với key trong file json */}
                                 <input type="text" id="tenSanPham" name="tenSanPham" style={{ maxWidth: '500px', background: '#F8FAFC' }}
                                     className="form-control"
@@ -95,7 +95,7 @@ const AddSPPage = () => {
                             {/* end frame-input */}
                             {/* frame-input */}
                             <div className="frame-input mb-2">
-                                <label htmlFor="imgUrl" className="fs-6 fw-bold">Ảnh</label>
+                                <label htmlFor="imgUrl" className="fs-6 fw-bold">Ảnh<span className="text-danger ms-1">*</span></label>
                                 {/* lưu ý đặt name giống với key trong file json */}
                                 <input type="file" id="imgUrl" name="imgUrl" style={{ maxWidth: '500px', background: '#F8FAFC' }}
                                     className="form-control"
@@ -110,7 +110,7 @@ const AddSPPage = () => {
                             <div className="d-flex gap-2">
                                 {/* frame-input */}
                                 <div className="frame-input mb-2 w-50">
-                                    <label htmlFor="ram" className="fs-6 fw-bold">RAM</label>
+                                    <label htmlFor="ram" className="fs-6 fw-bold">RAM<span className="text-danger ms-1">*</span></label>
                                     {/* lưu ý đặt name giống với key trong file json */}
                                     <input type="text" id="ram" name="ram" style={{ maxWidth: '500px', background: '#F8FAFC' }}
                                         className="form-control"
@@ -126,7 +126,7 @@ const AddSPPage = () => {
 
                                 {/* frame-input */}
                                 <div className="frame-input mb-2 w-50">
-                                    <label htmlFor="cpu" className="fs-6 fw-bold">CPU</label>
+                                    <label htmlFor="cpu" className="fs-6 fw-bold">CPU<span className="text-danger ms-1">*</span></label>
                                     {/* lưu ý đặt name giống với key trong file json */}
                                     <input type="text" id="cpu" name="cpu" style={{ maxWidth: '500px', background: '#F8FAFC' }}
                                         className="form-control"
@@ -145,7 +145,7 @@ const AddSPPage = () => {
                             <div className="d-flex gap-2">
                                 {/* frame-input */}
                                 <div className="frame-input mb-2 w-50">
-                                    <label htmlFor="camera" className="fs-6 fw-bold">Camera</label>
+                                    <label htmlFor="camera" className="fs-6 fw-bold">Camera<span className="text-danger ms-1">*</span></label>
                                     <input type="text" id="camera" name="camera" style={{ maxWidth: '500px', background: '#F8FAFC' }}
                                         className="form-control"
                                         {...register("camera", {
@@ -160,7 +160,7 @@ const AddSPPage = () => {
 
                                 {/* frame-input */}
                                 <div className="frame-input mb-2 w-50">
-                                    <label htmlFor="mauSac" className="fs-6 fw-bold">Màu Sắc</label>
+                                    <label htmlFor="mauSac" className="fs-6 fw-bold">Màu Sắc<span className="text-danger ms-1">*</span></label>
                                     <input type="text" id="mauSac" name="mauSac" style={{ maxWidth: '500px', background: '#F8FAFC' }}
                                         className="form-control"
                                         {...register("mauSac", {
@@ -177,7 +177,7 @@ const AddSPPage = () => {
                             <div className="d-flex gap-2">
                                 {/* frame-input */}
                                 <div className="frame-input mb-2 w-50">
-                                    <label htmlFor="nhanHang" className="fs-6 fw-bold">Nhãn Hàng</label>
+                                    <label htmlFor="nhanHang" className="fs-6 fw-bold">Nhãn Hàng<span className="text-danger ms-1">*</span></label>
                                     {/* lưu ý đặt name giống với key trong file json */}
                                     <input type="text" id="nhanHang" name="nhanHang" style={{ maxWidth: '500px', background: '#F8FAFC' }}
                                         className="form-control"
@@ -194,7 +194,7 @@ const AddSPPage = () => {
 
                                 {/* frame-input */}
                                 <div className="frame-input mb-2 w-50">
-                                    <label htmlFor="boNhoTrong" className="fs-6 fw-bold">Bộ nhớ</label>
+                                    <label htmlFor="boNhoTrong" className="fs-6 fw-bold">Bộ nhớ<span className="text-danger ms-1">*</span></label>
                                     {/* lưu ý đặt name giống với key trong file json */}
                                     <input type="text" id="boNhoTrong" name="boNhoTrong" style={{ maxWidth: '500px', background: '#F8FAFC' }}
                                         className="form-control"
@@ -213,14 +213,14 @@ const AddSPPage = () => {
                             <div className="d-flex gap-2">
                                 {/* frame-input */}
                                 <div className="frame-input mb-2 w-50">
-                                    <label htmlFor="giaVon" className="fs-6 fw-bold">Giá Vốn</label>
+                                    <label htmlFor="giaVon" className="fs-6 fw-bold">Giá Vốn<span className="text-danger ms-1">*</span></label>
                                     {/* lưu ý đặt name giống với key trong file json */}
                                     <input type="number" id="giaVon" name="giaVon" style={{ maxWidth: '500px', background: '#F8FAFC' }}
                                         className="form-control"
                                         // lưu ý đặt biến sau ...register("key trong json")
                                         {...register("giaVon", {
                                             required: { value: true, message: 'Vui lòng điền trường này' },
-                                            min: { value: 0, message: 'Nhỏ nhất là 0' },
+                                            min: { value: 1, message: 'Nhỏ nhất là 1' },
                                             max: { value: 1000000000, message: 'Lớn nhất là 1,000,000,000' }
                                         })}
                                     />
@@ -230,12 +230,12 @@ const AddSPPage = () => {
 
                                 {/* frame-input */}
                                 <div className="frame-input mb-2 w-50">
-                                    <label htmlFor="giaNiemYet" className="fs-6 fw-bold">Giá Bán</label>
+                                    <label htmlFor="giaNiemYet" className="fs-6 fw-bold">Giá Bán<span className="text-danger ms-1">*</span></label>
                                     <input type="number" id="giaNiemYet" name="giaNiemYet" style={{ maxWidth: '500px', background: '#F8FAFC' }}
                                         className="form-control"
                                         {...register("giaNiemYet", {
                                             required: { value: true, message: 'Vui lòng điền trường này' },
-                                            min: { value: 0, message: 'Nhỏ nhất là 0' },
+                                            min: { value: 1, message: 'Nhỏ nhất là 1' },
                                             max: { value: 1000000000, message: 'Lớn nhất là 1,000,000,000' }
                                         })}
                                     />

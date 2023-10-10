@@ -75,7 +75,7 @@ const AddEmpPage = () => {
                         <form onSubmit={handleSubmit(onSubmit)}>
                             {/* frame-input */}
                             <div className="frame-input mb-2">
-                                <label htmlFor="tenNhanVien" className="fs-6 fw-bold">Tên NV</label>
+                                <label htmlFor="tenNhanVien" className="fs-6 fw-bold">Tên NV<span className="text-danger ms-1">*</span></label>
                                 {/* lưu ý đặt name giống với key trong file json */}
                                 <input type="text" id="tenNhanVien" name="tenNhanVien" style={{ maxWidth: '500px', background: '#F8FAFC' }}
                                     className="form-control"
@@ -91,12 +91,12 @@ const AddEmpPage = () => {
                             {/* end frame-input */}
                             {/* frame-input */}
                             <div className="frame-input mb-2">
-                                <label htmlFor="ngaySinh" className="fs-6 fw-bold">Ngày Sinh</label>
+                                <label htmlFor="ngaySinh" className="fs-6 fw-bold">Ngày Sinh<span className="text-danger ms-1">*</span></label>
 
                                 <input type="date" id="ngaySinh" name="ngaySinh" style={{ maxWidth: '500px', background: '#F8FAFC' }}
                                     className="form-control"
                                     {...register("ngaySinh", {
-
+                                        required:{value:true,message:configMes.REQ}
                                     })}
                                 />
                                 {errors.ngaySinh && <p className="text-danger ps-1 m-0">{errors.ngaySinh.message}</p>}
@@ -105,7 +105,7 @@ const AddEmpPage = () => {
 
                             {/* frame-input */}
                             <div className="frame-input mb-2 d-flex flex-wrap gap-1">
-                                <label htmlFor="gioiTinh" className="fs-6 fw-bold w-100">Giới Tính</label>
+                                <label htmlFor="gioiTinh" className="fs-6 fw-bold w-100">Giới Tính<span className="text-danger ms-1">*</span></label>
                                 {/* ô radio */}
                                 <div className="frame-radio d-flex gap-1">
                                     <input type="radio" id="nam"
@@ -149,13 +149,13 @@ const AddEmpPage = () => {
                             {/* frame-input password vs repassword */}
                             <div className="frame-pass-input d-flex justify-content-between gap-2">
                                 <div className="frame-input mb-2 w-50">
-                                    <label htmlFor="password" className="fs-6 fw-bold">Password</label>
+                                    <label htmlFor="password" className="fs-6 fw-bold">Password<span className="text-danger ms-1">*</span></label>
                                     <input type="password" id="password" name="password" style={{ maxWidth: '500px', background: '#F8FAFC' }}
                                         className="form-control"
                                         {...register("password", {
                                             required: { value: true, message: 'Vui lòng điền trường này' },
-                                            maxLength: { value: 50, message: 'Toi da 50 ki tu' },
-                                            pattern: { value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$/, message: 'Ít nhất 1 chữ hoa, 1 chữ thường và 1 số. Độ dài ít nhất 8 kí tự' }//xử lý pass có 1 viết hoa, 1 viết thường, 1 số
+                                            maxLength: { value: 20, message: 'Toi da 20 ki tu' },
+                                            pattern: { value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$/, message: 'Ít nhất 1 chữ hoa, 1 chữ thường, 1 kí tự đặc biệt và 1 số. Độ dài ít nhất 8 kí tự' }
                                         })}
                                     />
                                     {errors.password && <p className="text-danger ps-1 m-0">{errors.password.message}</p>}
@@ -163,7 +163,7 @@ const AddEmpPage = () => {
                                 {/* end frame-input */}
                                 {/* frame-input */}
                                 <div className="frame-input mb-1 w-50">
-                                    <label htmlFor="repassword" className="fs-6 fw-bold">Re-Password</label>
+                                    <label htmlFor="repassword" className="fs-6 fw-bold">Re-Password<span className="text-danger ms-1">*</span></label>
                                     <input type="password" id="repassword" name="repassword" style={{ maxWidth: '500px', background: '#F8FAFC' }}
                                         className="form-control"
                                         {...register("rePassword", {

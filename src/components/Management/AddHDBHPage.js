@@ -1,9 +1,9 @@
 import MenuSide from "./MenuSide";
 import { useForm } from "react-hook-form";
-import { configMes, validateInfoKHInHDBH, validateName } from "../../Validate/validateEmp";
+import { configMes, validateInfoKHInHDBH } from "../../Validate/validateEmp";
 import { useNavigate } from "react-router-dom";
 import { getRequest, postRequest } from "../../axios/httpRequest";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import CreatableSelect from "react-select/creatable";
 import Toast from "../utils/Toast";
 
@@ -79,6 +79,7 @@ const AddHDBHPage = () => {
         const result = await postRequest("/staff/invoice", data);
         changeRouter("/list-hdbh", { status: 'success', message: 'Thêm thành công' });
       } catch (error) {
+        console.log(error);
         const cloneErr = { ...error.response.data }
         await setErrorField(cloneErr);
         setToastStatus({ status: 'error', message: error.message });
@@ -117,7 +118,7 @@ const AddHDBHPage = () => {
     getListCTDH[idx][type] = value;
     let sum = 0;
     let realSum = 0;
-    getListCTDH.filter((element) => {
+    getListCTDH.map((element) => {
       sum =
         sum +
         (Number(element.soLuong) || 0) *
@@ -246,7 +247,7 @@ const AddHDBHPage = () => {
               </div>
               <div className="frame-input d-flex gap-2 align-items-center">
                 <label htmlFor="soDienThoai" className="fs-6 fw-bold w-25 me-4">
-                  Số Điện Thoại
+                  Số Điện Thoại<span className="text-danger ms-1">*</span>
                 </label>
                 <CreatableSelect
                   className="form-control border-0 w-100 p-0"
@@ -269,7 +270,7 @@ const AddHDBHPage = () => {
               {/* frame-input */}
               <div className="frame-input d-flex gap-2 align-items-center">
                 <label htmlFor="tenKhachHang" className="fs-6 fw-bold w-25 me-4">
-                  Họ và Tên
+                  Họ và Tên<span className="text-danger ms-1">*</span>
                 </label>
 
                 <input
@@ -282,8 +283,6 @@ const AddHDBHPage = () => {
                       : true
                   }
                   {...register("tenKhachHang", {
-                    // required: { value: true, 
-                    // message: 'Vui lòng chọn số điện thoại và nhập trường này' },
                     pattern: { value: /^[a-zA-Z ]{1,}$/ },
                     max: { value: 50, message: 'Tối đa 50 kí tự' }
                   })}
@@ -302,10 +301,9 @@ const AddHDBHPage = () => {
               <div className="d-flex justify-content-between gap-2">
                 {/* frame-input */}
                 <div className="frame-input mb-3 w-50">
-                  <label htmlFor="maNhaCungCap" className="fs-6 fw-bold w-25">
-                    Giới Tính
+                  <label htmlFor="maNhaCungCap" className="fs-6 fw-bold">
+                    Giới Tính<span className="text-danger ms-1">*</span>
                   </label>
-                  {/* lưu ý đặt name giống với key trong file json */}
                   <select
                     className="form-control"
                     id="gioiTinh"
@@ -313,7 +311,6 @@ const AddHDBHPage = () => {
                       dataKHSelect[0].gioiTinh === "" && onCheck ? false : true
                     }
                     {...register("gioiTinh", {
-                      // required: { value: true, message: 'Vui lòng chọn số điện thoại và nhập trường này' }
                     })}
                   >
                     <option value="">---Chọn Giới Tính---</option>
@@ -334,8 +331,8 @@ const AddHDBHPage = () => {
 
                 {/* frame-input */}
                 <div className="frame-input mb-3 w-50">
-                  <label htmlFor="ngaySinh" className="fs-6 fw-bold w-25">
-                    Ngày sinh
+                  <label htmlFor="ngaySinh" className="fs-6 fw-bold">
+                    Ngày sinh<span className="text-danger ms-1">*</span>
                   </label>
                   <input
                     type="date"
@@ -347,7 +344,6 @@ const AddHDBHPage = () => {
                       dataKHSelect[0].ngaySinh === "" && onCheck ? false : true
                     }
                     {...register("ngaySinh", {
-                      // required: { value: true, message: 'Vui lòng chọn số điện thoại và nhập trường này' },
                     })}
                   />
                   <div className="mb-3">
@@ -397,7 +393,7 @@ const AddHDBHPage = () => {
                             }
                             className="fs-6 fw-bold"
                           >
-                            Sản Phẩm
+                            Sản Phẩm<span className="text-danger ms-1">*</span>
                           </label>
                           <select
                             className="form-control"
@@ -460,7 +456,6 @@ const AddHDBHPage = () => {
                               idx +
                               "].giaNiemYetHienTai",
                               {
-                                // required: { value: true, message: "Vui lòng nhập giá tiền" }
                               }
                             )}
                           />
@@ -485,10 +480,10 @@ const AddHDBHPage = () => {
                             htmlFor={`chiTietHoaDonBanHang[${idx}].soLuong`}
                             className="fs-6 fw-bold"
                           >
-                            Số Lượng
+                            Số Lượng<span className="text-danger ms-1">*</span>
                           </label>
                           <input
-                            type="text"
+                            type="number"
                             id={`chiTietHoaDonBanHang[${idx}].soLuong`}
                             style={{ maxWidth: "500px" }}
                             className="form-control"
@@ -497,7 +492,15 @@ const AddHDBHPage = () => {
                               {
                                 required: {
                                   value: true,
-                                  message: "Vui lòng nhập số lượng",
+                                  message: configMes.REQ,
+                                },
+                                min:{
+                                  value:1,
+                                  message:'Nhỏ nhất là 1'
+                                },
+                                max:{
+                                  value:1000000,
+                                  message:'Tối đa 1,000,000'
                                 },
                                 onChange: (e) => {
                                   handleChangeInputCTDH(
@@ -529,10 +532,10 @@ const AddHDBHPage = () => {
                             htmlFor={`chiTietHoaDonBanHang[${idx}].giaBanThuc`}
                             className="fs-6 fw-bold"
                           >
-                            Giá Thực
+                            Giá Thực<span className="text-danger ms-1">*</span>
                           </label>
                           <input
-                            type="text"
+                            type="number"
                             id={`chiTietHoaDonBanHang[${idx}].giaBanThuc`}
                             style={{ maxWidth: "500px" }}
                             className="form-control"
@@ -541,7 +544,15 @@ const AddHDBHPage = () => {
                               {
                                 required: {
                                   value: true,
-                                  message: "Vui lòng nhập giá bán thực",
+                                  message: configMes.REQ,
+                                },
+                                min:{
+                                  value:1,
+                                  message:'Nhỏ nhất là 1'
+                                },
+                                max:{
+                                  value:1000000000,
+                                  message:'Tối đa 1,000,000,000'
                                 },
                                 onChange: (e) => {
                                   handleChangeInputCTDH(

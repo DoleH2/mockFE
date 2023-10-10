@@ -99,7 +99,7 @@ const EditNCCPage = () => {
                             {/* end frame-input */}
                             {/* frame-input */}
                             <div className="frame-input mb-2">
-                                <label htmlFor="tenNhaCungCap" className="fs-6 fw-bold">Tên Nhà Cung Cấp</label>
+                                <label htmlFor="tenNhaCungCap" className="fs-6 fw-bold">Tên Nhà Cung Cấp<span className="text-danger ms-1">*</span></label>
                                 <input type="text" id="tenNhaCungCap" name="tenNhaCungCap" style={{ maxWidth: '500px', background: '#F8FAFC' }}
                                     className="form-control"
                                     {...register("tenNhaCungCap", {
@@ -113,12 +113,13 @@ const EditNCCPage = () => {
                             {/* end frame-input */}
                             {/* frame-input */}
                             <div className="frame-input mb-2">
-                                <label htmlFor="email" className="fs-6 fw-bold">Email</label>
+                                <label htmlFor="email" className="fs-6 fw-bold">Email<span className="text-danger ms-1">*</span></label>
                                 <input type="email" id="email" name="email" style={{ maxWidth: '500px', background: '#F8FAFC' }}
                                     className="form-control"
                                     {...register("email", {
                                         required: { value: true, message: configMes.REQ },
-                                        pattern: { value: /^[a-zA-Z0-9._%+-]{5,20}@[a-zA-Z0-9.-]{3,10}\.[a-zA-Z]{3,10}$/, message: 'Email có format abcde@xyz.com' }
+                                        pattern: { value: /^[a-zA-Z0-9._%+-]{5,20}@[a-zA-Z0-9.-]{3,10}\.[a-zA-Z]{3,10}$/, message: 'Email có format abcde@xyz.com' },
+                                        maxLength: { value: 100, message: 'Toi da 100 ki tu' }
                                     })}
                                 />
                                 {errors.email && <p className="text-danger ps-1 m-0">{errors.email.message}</p>}
@@ -126,14 +127,13 @@ const EditNCCPage = () => {
                             {/* end frame-input */}
                             {/* frame-input */}
                             <div className="frame-input mb-2">
-                                <label htmlFor="soDienThoai" className="fs-6 fw-bold">Số Điện Thoại</label>
+                                <label htmlFor="soDienThoai" className="fs-6 fw-bold">Số Điện Thoại<span className="text-danger ms-1">*</span></label>
 
                                 <input type="text" id="soDienThoai" name="soDienThoai" style={{ maxWidth: '500px', background: '#F8FAFC' }}
                                     className="form-control"
                                     {...register("soDienThoai", {
                                         pattern: { value: /^09[0-9]{8}$/, message: 'SDT theo format 09xxxxxxxx' },
-                                        required: { value: true, message: configMes.REQ },
-                                        maxLength: { value: 100, message: 'Tối đa 100 kí tự' }
+                                        required: { value: true, message: configMes.REQ }
                                     })}
                                 />
                                 {errors.soDienThoai && <p className="text-danger ps-1 m-0">{errors.soDienThoai.message}</p>}
@@ -142,7 +142,7 @@ const EditNCCPage = () => {
 
                             {/* frame-input */}
                             <div className="frame-input mb-2">
-                                <label htmlFor="diaChi" className="fs-6 fw-bold">Địa Chỉ</label>
+                                <label htmlFor="diaChi" className="fs-6 fw-bold">Địa Chỉ<span className="text-danger ms-1">*</span></label>
 
                                 <input type="text" id="diaChi" name="diaChi" style={{ maxWidth: '500px', background: '#F8FAFC' }}
                                     className="form-control"
