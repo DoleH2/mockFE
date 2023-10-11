@@ -50,6 +50,9 @@
 th,td{
     vertical-align: middle;
 }
+th{
+    text-align: center !important;
+}
 
 @keyframes shake {
     0% { transform: rotate(0deg); }

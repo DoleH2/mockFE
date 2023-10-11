@@ -219,7 +219,10 @@ const AddHDNHPage = () => {
                                                                 required: { value: true, message: "Vui lòng nhập số lượng" },
                                                                 min:{value:1,message:"Nhỏ nhất là 1"},
                                                                 max:{value:1000000,message:"Tối đa là 1,000,000"},
-                                                                onChange: (e) => { handleChangeInputCTDH(idx, "soLuong", e.target.value) }
+                                                                onChange: (e) => { 
+                                                                    handleChangeInputCTDH(idx, "soLuong", e.target.value);
+                                                                    setValue("chiTietHoaDonNhapHangDTO[" + idx + "].tongTien",e.target.value*element.sanPhamDTO.giaVon);
+                                                                 }
                                                             })}
                                                         />
                                                         {errors.chiTietHoaDonNhapHangDTO &&
@@ -232,6 +235,15 @@ const AddHDNHPage = () => {
                                                         <input type="text" id={`chiTietHoaDonNhapHangDTO[${idx}].sanPhamDTO.giaVon`} style={{ maxWidth: '500px' }}
                                                             className="form-control" disabled={true}
                                                             value={element.sanPhamDTO && element.sanPhamDTO.giaVon || 0}
+                                                        />
+                                                    </div>
+                                                    <div className="frame-input mb-2">
+                                                        <label className="fs-6 fw-bold">Tổng tiền</label>
+                                                        <input type="text" style={{ maxWidth: '500px' }}
+                                                            className="form-control" disabled={true}
+                                                            {...register("chiTietHoaDonNhapHangDTO[" + idx + "].tongTien",{
+
+                                                            })}
                                                         />
                                                     </div>
                                                 </div>

@@ -221,13 +221,13 @@ const ListKHPage = () => {
                                     {
                                         dataDisplay.map((kh, idx) => (
                                             <tr key={idx}>
-                                                <td>{kh.maKhachHang}</td>
+                                                <td className='text-end'>{kh.maKhachHang}</td>
                                                 <td>{kh.tenKhachHang}</td>
-                                                <td>{kh.ngaySinh}</td>
+                                                <td className='text-center'>{kh.ngaySinh}</td>
                                                 <td>{kh.gioiTinh}</td>
-                                                <td>{kh.soDienThoai}</td>
+                                                <td className='text-end'>{kh.soDienThoai}</td>
                                                 <td style={{ width: '10%', minWidth: '100px', maxWidth: '150px' }}>
-                                                    <div className="d-flex gap-2">
+                                                    <div className="d-flex gap-2 justify-content-around">
                                                         <a className="btn btn-light border text-success border-0"
                                                             onClick={() => { changeRouter('/edit-kh/' + kh.maKhachHang, kh) }}
                                                         >

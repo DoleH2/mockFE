@@ -24,7 +24,6 @@ const AddEmpPage = () => {
     const [clickSubmit,setClickSubmit] = useState(true);
     const onSubmit = async (data) => {
         // dung axios gui
-        console.log(data);
         const fetchApi = async () => {
             try {
                 const result = await postRequest(
@@ -34,10 +33,14 @@ const AddEmpPage = () => {
                 console.log(result);
                 changeRouter("/list-emp",{status:'success',message:'Thêm mới nhân viên, account '+result.maNhanVien});
             } catch (error) {
-                const cloneErr = { ...error.response.data }
-                await setErrorField(cloneErr);
-                setToastStatus({status:'error',message:error.message});
-                setClickSubmit(true);
+                if(error.response.status === 400){
+                    const cloneErr = { ...error.response.data }
+                    await setErrorField(cloneErr);
+                    setToastStatus({status:'error',message:error.message});
+                    setClickSubmit(true);
+                }else{
+                    changeRouter("/error");
+                }
             }
         };
         const setErrorField = async (resultInput) => {

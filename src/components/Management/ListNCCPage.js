@@ -210,13 +210,13 @@ const ListNCCPage = () => {
                                     {
                                         dataDisplay.map((ncc, idx) => (
                                             <tr key={idx}>
-                                                <td style={{ width: '10%' }}>{ncc.maNhaCungCap}</td>
+                                                <td className='text-end' style={{ width: '10%' }}>{ncc.maNhaCungCap}</td>
                                                 <td>{ncc.tenNhaCungCap}</td>
                                                 <td>{ncc.email}</td>
-                                                <td>{ncc.soDienThoai}</td>
+                                                <td className='text-end'>{ncc.soDienThoai}</td>
                                                 <td>{ncc.diaChi}</td>
                                                 <td style={{ width: '10%', minWidth: '100px', maxWidth: '150px' }}>
-                                                    <div className="d-flex gap-2">
+                                                    <div className="d-flex gap-2 justify-content-around">
                                                         <a className="btn btn-light border text-success border-0"
                                                             onClick={() => { changeRouter('/edit-ncc/' + ncc.maNhaCungCap, ncc) }}
                                                         >

@@ -222,7 +222,7 @@ const ListNVPage = () => {
                                                 <td style={{ width: '5%', minWidth: '50px', maxWidth: '100px' }}>{(idx+1)+(rowsPerPage*currentPage)}</td>
                                                 <td>{emp.maNhanVien}</td>
                                                 <td>{emp.tenNhanVien}</td>
-                                                <td>{emp.ngaySinh}</td>
+                                                <td className='text-center'>{emp.ngaySinh}</td>
                                                 <td>{emp.gioiTinh}</td>
                                                 <td style={{ width: '10%', minWidth: '100px', maxWidth: '150px' }}>
                                                     <div className="d-flex gap-2">

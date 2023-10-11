@@ -178,9 +178,9 @@ const ListHoaDonBHPage = () => {
                             <table className="table table-bordered table-striped">
                                 <thead className='table-light'>
                                     <tr>
-                                        <th>Mã HĐBH</th>
-                                        <th>Account NV</th>
-                                        <th>Mã KH</th>
+                                        <th style={{ width: '10%' }}>Mã HĐBH</th>
+                                        <th style={{ width: '15%' }}>Account NV</th>
+                                        <th style={{ width: '20%' }}>Tên KH</th>
                                         <th>Thời Gian BH</th>
                                         <th>Tổng Hóa Đơn</th>
                                         <th>Action</th>
@@ -200,13 +200,13 @@ const ListHoaDonBHPage = () => {
                                     {
                                         dataDisplay.map((hd, idx) => (
                                             <tr key={idx}>
-                                                <td style={{ width: '10%' }}>{hd.maHoaDonBanHang}</td>
-                                                <td style={{ width: '10%' }}>{hd.maNhanVien}</td>
-                                                <td style={{ width: '10%' }}>{hd.maKhachHang}</td>
-                                                <td>{moment(hd.thoiGianBanHang).format('DD-MM-yyyy HH:mm:ss')}</td>
-                                                <td>{hd.tongHoaDon}</td>
-                                                <td style={{ width: '10%', minWidth: '100px', maxWidth: '150px' }}>
-                                                    <div className="d-flex gap-2">
+                                                <td className='text-end'>{hd.maHoaDonBanHang}</td>
+                                                <td>{hd.maNhanVien}</td>
+                                                <td>{hd.tenKhachHang}</td>
+                                                <td className='text-center'>{moment(hd.thoiGianBanHang).format('DD-MM-yyyy HH:mm:ss')}</td>
+                                                <td className='text-end'>{hd.tongHoaDon}</td>
+                                                <td className='text-center' style={{ width: '10%', minWidth: '100px', maxWidth: '150px' }}>
+                                                    <div className="mx-auto gap-2">
                                                         <button className="btn btn-light border border-0 px-3"
                                                             data-bs-toggle="modal" data-bs-target="#exampleModal1"
                                                             onClick={() => { handleClickInfo(hd.maHoaDonBanHang, hd.chiTietHoaDonBanHang) }}

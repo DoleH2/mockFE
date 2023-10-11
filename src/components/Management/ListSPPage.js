@@ -218,7 +218,7 @@ const ListSPPage = () => {
                                     {
                                         dataDisplay.map((sp, idx) => (
                                             <tr key={idx}>
-                                                <td>{sp.maSanPham}</td>
+                                                <td className='text-end'>{sp.maSanPham}</td>
                                                 <td>{sp.tenSanPham}</td>
                                                 <td>{sp.ram}</td>
                                                 <td>{sp.cpu}</td>
@@ -226,12 +226,12 @@ const ListSPPage = () => {
                                                 <td>{sp.mauSac}</td>
                                                 <td>{sp.camera}</td>
                                                 <td>{sp.boNhoTrong}</td>
-                                                <td>{sp.soLuong}</td>
-                                                <td>{sp.giaVon}</td>
-                                                <td>{sp.giaNiemYet}</td>
+                                                <td className='text-end'>{sp.soLuong}</td>
+                                                <td className='text-end'>{(sp.giaVon).toLocaleString()}</td>
+                                                <td className='text-end'>{(sp.giaNiemYet.toLocaleString())}</td>
 
                                                 <td style={{ width: '10%', minWidth: '100px', maxWidth: '150px' }}>
-                                                    <div className="d-flex gap-2">
+                                                    <div className="d-flex gap-2 justify-content-around">
                                                         <a className="btn btn-light border text-success border-0"
                                                             onClick={() => { changeRouter('/edit-sp/' + sp.maSanPham, sp) }}
                                                         >

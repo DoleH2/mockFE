@@ -179,8 +179,8 @@ const ListHoaDonNHPage = () => {
                             <table className="table table-bordered table-striped">
                                 <thead className='table-light'>
                                     <tr>
-                                        <th>Mã Hóa Đơn</th>
-                                        <th>Tên Nhà Cung Cấp</th>
+                                        <th style={{width:'10%'}}>Mã Hóa Đơn</th>
+                                        <th style={{width:'25%'}}>Tên Nhà Cung Cấp</th>
                                         <th>Thời Gian</th>
                                         <th>Tổng Hóa Đơn</th>
                                         <th>Action</th>
@@ -200,12 +200,12 @@ const ListHoaDonNHPage = () => {
                                     {
                                         dataDisplay.map((hd, idx) => (
                                             <tr key={idx}>
-                                                <td style={{ width: '10%' }}>{hd.maHoaDonNhapHang}</td>
+                                                <td className='text-end' style={{ width: '10%' }}>{hd.maHoaDonNhapHang}</td>
                                                 <td style={{ width: '10%' }}>{hd.tenNhaCungCap}</td>
-                                                <td>{moment(hd.thoiGianNhapHang).format('DD-MM-yyyy HH:mm:ss')}</td>
-                                                <td>{hd.tongHoaDon}</td>
+                                                <td className='text-center'>{moment(hd.thoiGianNhapHang).format('DD-MM-yyyy HH:mm:ss')}</td>
+                                                <td className='text-end'>{(hd.tongHoaDon).toLocaleString()}</td>
                                                 <td style={{ width: '10%', minWidth: '100px', maxWidth: '150px' }}>
-                                                    <div className="d-flex gap-2">
+                                                    <div className="d-flex gap-2 justify-content-center">
                                                         <button className="btn btn-light border border-0 px-3"
                                                             data-bs-toggle="modal" data-bs-target="#exampleModal1"
                                                             onClick={() => { handleClickInfo(hd.maHoaDonNhapHang, hd.chiTietHoaDonNhapHangDTO) }}

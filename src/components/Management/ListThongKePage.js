@@ -110,21 +110,37 @@ const ListThongKePage = () => {
     const [typeSort, setTypeSort] = useState(true);
 
 
+    // const handleSort = (field) => {
+    //     if(fieldSort === field){
+    //         if (typeSort) {
+    //             dataDisplay.sort((a, b) => a[field] - b[field]);
+    //             setTypeSort(false);
+    //         } else {
+    //             dataDisplay.sort((a, b) => -(a[field] - b[field]));
+    //             setTypeSort(true);
+    //         }
+    //     }else{
+    //         dataDisplay.sort((a, b) => a[field] - b[field]);
+    //         setTypeSort(false);
+    //     }
+    //     setFieldSort(field);
+    //     setDataDisplay(dataDisplay);
+    // }
     const handleSort = (field) => {
         if(fieldSort === field){
             if (typeSort) {
-                dataDisplay.sort((a, b) => a[field] - b[field]);
+                data.sort((a, b) => a[field] - b[field]);
                 setTypeSort(false);
             } else {
-                dataDisplay.sort((a, b) => -(a[field] - b[field]));
+                data.sort((a, b) => -(a[field] - b[field]));
                 setTypeSort(true);
             }
         }else{
-            dataDisplay.sort((a, b) => a[field] - b[field]);
+            data.sort((a, b) => a[field] - b[field]);
             setTypeSort(false);
         }
         setFieldSort(field);
-        setDataDisplay(dataDisplay);
+        setData([...data]);
     }
     //end sort
 
@@ -220,12 +236,13 @@ const ListThongKePage = () => {
                             </p>
                             <p>Tổng Doanh thu:
                                 <span className='fw-bold px-1'>
-                                    {listTKJSON.tongDoanhThu || 0}
+                                    {(Number(listTKJSON.tongDoanhThu)) === 0 || !listTKJSON.tongDoanhThu ?
+                                     0 : (Number(listTKJSON.tongDoanhThu)).toLocaleString()}
                                 </span>
                                 VND</p>
                             <p>Tổng Lợi nhuận:
                                 <span className='fw-bold px-1'>
-                                    {listTKJSON.tongLoiNhuan || 0}
+                                    {(Number(listTKJSON.tongLoiNhuan)) === 0 || !listTKJSON.tongLoiNhuan ? 0 : (Number(listTKJSON.tongLoiNhuan)).toLocaleString()}
                                 </span>
                                 VND</p>
                         </div>
@@ -310,14 +327,14 @@ const ListThongKePage = () => {
                                                 <td style={{ width: '10%' }}>
                                                     {typeThongKe === "thongKeSanPham" ? hd.tenSanPham : hd.tenNhanVien}
                                                 </td>
-                                                <td>
-                                                    {hd.soLuongBan}
+                                                <td className='text-end'>
+                                                    {hd.soLuongBan.toLocaleString()}
                                                 </td>
-                                                <td>
-                                                    {hd.doanhThu}
+                                                <td className='text-end'>
+                                                    {hd.doanhThu.toLocaleString()}
                                                 </td>
-                                                <td>
-                                                    {hd.loiNhuan}
+                                                <td className='text-end'>
+                                                    {hd.loiNhuan.toLocaleString()}
                                                 </td>
                                             </tr>
                                         ))
