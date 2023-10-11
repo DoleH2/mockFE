@@ -219,7 +219,7 @@ const ListNVPage = () => {
                                         dataDisplay.map((emp, idx) => (
                                             
                                             <tr key={idx}>
-                                                <td style={{ width: '5%', minWidth: '50px', maxWidth: '100px' }}>{(idx+1)+(rowsPerPage*currentPage)}</td>
+                                                <td className='text-end' style={{ width: '5%', minWidth: '50px', maxWidth: '100px' }}>{(idx+1)+(rowsPerPage*currentPage)}</td>
                                                 <td>{emp.maNhanVien}</td>
                                                 <td>{emp.tenNhanVien}</td>
                                                 <td className='text-center'>{emp.ngaySinh}</td>

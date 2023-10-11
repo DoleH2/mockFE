@@ -231,7 +231,7 @@ const ListThongKePage = () => {
                         <div className='frame-stats m-2'>
                             <p>Tổng Số lượng sản phẩm bán:
                                 <span className='fw-bold px-1'>
-                                    {listTKJSON.tongSoLuong || 0}
+                                    {listTKJSON.tongSoLuong !== 0 && listTKJSON.tongSoLuong ? Number(listTKJSON.tongSoLuong).toLocaleString() : 0}
                                 </span>
                             </p>
                             <p>Tổng Doanh thu:

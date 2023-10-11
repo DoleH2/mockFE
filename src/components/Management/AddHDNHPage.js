@@ -37,6 +37,7 @@ const AddHDNHPage = () => {
     ////xử lý khi submit
     const [toastStatus, setToastStatus] = useState({ status: '', message: '' });
     const onSubmit = async (data) => {
+        setClickSubmit(false);
         if (listCTHD.length === 0) {
             setError('custom', { message: 'Chua co thong tin ban hang' });
             return;

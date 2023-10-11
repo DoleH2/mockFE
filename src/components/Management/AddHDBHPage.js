@@ -55,6 +55,7 @@ const AddHDBHPage = () => {
 
   const [clickSubmit, setClickSubmit] = useState(true);
   const onSubmit = async (data) => {
+    setClickSubmit(false);
     data.soDienThoai = sdtSelect;
     const result = validateInfoKHInHDBH(data.soDienThoai, data.tenKhachHang, data.gioiTinh, data.ngaySinh, setError);
     if (!result) {

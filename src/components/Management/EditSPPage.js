@@ -41,6 +41,7 @@ const EditSPPage = () => {
   const [toastStatus, setToastStatus] = useState({ status: '', message: '' });
   const [clickSubmit, setClickSubmit] = useState(true);
   const onSubmit = async (data) => {
+    setClickSubmit(false);
     data.maSanPham = dataDefault.maSanPham;
     const nameImg = (data.imgUrl[0] && data.imgUrl[0].name) || null;
     const img = null;

@@ -244,8 +244,8 @@ const ListHoaDonNHPage = () => {
                                                             <tr key={idx}>
                                                                 <td>{info.maChiTietHoaDonNhapHang}</td>
                                                                 <td>{info.sanPhamDTO.tenSanPham}</td>
-                                                                <td>{info.soLuong}</td>
-                                                                <td>{info.sanPhamDTO.giaVon}</td>
+                                                                <td>{Number(info.soLuong).toLocaleString()}</td>
+                                                                <td>{Number(info.sanPhamDTO.giaVon).toLocaleString()}</td>
                                                             </tr>
 
                                                         ))

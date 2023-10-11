@@ -24,6 +24,7 @@ const AddEmpPage = () => {
     const [clickSubmit,setClickSubmit] = useState(true);
     const onSubmit = async (data) => {
         // dung axios gui
+        setClickSubmit(false);
         const fetchApi = async () => {
             try {
                 const result = await postRequest(

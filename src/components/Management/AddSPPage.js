@@ -25,6 +25,7 @@ const AddSPPage = () => {
     const accountRef = useRef();
     const [clickSubmit, setClickSubmit] = useState(true);
     const onSubmit = async (data) => {
+        setClickSubmit(false);
         //upload img len firebase
         //set lại imgUrl thành string để gửi json
         const setErrorField = async (resultInput) => {

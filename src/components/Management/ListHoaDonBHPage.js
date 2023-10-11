@@ -204,7 +204,7 @@ const ListHoaDonBHPage = () => {
                                                 <td>{hd.maNhanVien}</td>
                                                 <td>{hd.tenKhachHang}</td>
                                                 <td className='text-center'>{moment(hd.thoiGianBanHang).format('DD-MM-yyyy HH:mm:ss')}</td>
-                                                <td className='text-end'>{hd.tongHoaDon}</td>
+                                                <td className='text-end'>{Number(hd.tongHoaDon).toLocaleString()}</td>
                                                 <td className='text-center' style={{ width: '10%', minWidth: '100px', maxWidth: '150px' }}>
                                                     <div className="mx-auto gap-2">
                                                         <button className="btn btn-light border border-0 px-3"
@@ -213,9 +213,6 @@ const ListHoaDonBHPage = () => {
                                                         >
                                                             <i className="fa-solid fa-info"></i>
                                                         </button>
-                                                        {/* <button className="btn btn-light border text-danger border-0" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => { handleClickDelete(hd.maHoaDonBanHang) }}>
-                                                            <i className="fa-solid fa-trash"></i>
-                                                        </button> */}
                                                     </div>
                                                 </td>
                                             </tr>
