@@ -248,9 +248,9 @@ const ListHoaDonBHPage = () => {
                                                                 <td>{info.maChiTietHoaDonBanHang}</td>
                                                                 <td>{info.tenSanPham}</td>
                                                                 <td>{info.maHoaDonBanHang}</td>
-                                                                <td>{info.soLuong}</td>
-                                                                <td>{info.giaNiemYetHienTai}</td>
-                                                                <td>{info.giaBanThuc}</td>
+                                                                <td>{Number(info.soLuong).toLocaleString()}</td>
+                                                                <td>{Number(info.giaNiemYetHienTai).toLocaleString()}</td>
+                                                                <td>{Number(info.giaBanThuc).toLocaleString()}</td>
                                                             </tr>
 
                                                         ))
