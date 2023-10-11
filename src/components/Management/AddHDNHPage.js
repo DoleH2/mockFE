@@ -228,7 +228,7 @@ const AddHDNHPage = () => {
                                                     </div>
 
                                                     <div className="frame-input mb-2">
-                                                        <label htmlFor={`chiTietHoaDonNhapHangDTO[${idx}].sanPhamDTO.giaVon`} className="fs-6 fw-bold">Giá Vốn</label>
+                                                        <label htmlFor={`chiTietHoaDonNhapHangDTO[${idx}].sanPhamDTO.giaVon`} className="fs-6 fw-bold">Đơn Giá</label>
                                                         <input type="text" id={`chiTietHoaDonNhapHangDTO[${idx}].sanPhamDTO.giaVon`} style={{ maxWidth: '500px' }}
                                                             className="form-control" disabled={true}
                                                             value={element.sanPhamDTO && element.sanPhamDTO.giaVon || 0}

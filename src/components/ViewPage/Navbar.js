@@ -15,7 +15,7 @@ const Navbar = () => {
     register,
     handleSubmit,
     formState: { errors },
-    setValue, setError, clearErrors
+    setValue, setError, clearErrors,reset
   } = useForm();
 
   const handleChangeLogin = () => {
@@ -37,8 +37,11 @@ const Navbar = () => {
 
         }
       } catch (error) {
-        if (error.response && error.response.data) {
+        console.log(error);
+        if (error.response && error.response.data && error.response.status === 400) {
           await setErrorField(error.response.data);
+        }else{
+          changeRouter("/error",error);
         }
       }
     }
@@ -231,11 +234,16 @@ const Navbar = () => {
             {
               !login ?
                 (
-                  <button
+                  <button type="reset"
                     className="btn rounded-0 btn-toggle-login m-0 mx-1 nav-link font-weight-bold px-3 py-2"
                     href="#"
                     data-bs-toggle="modal"
                     data-bs-target="#modalLogin"
+                    onClick={()=>{
+                      setValue("username","");
+                      setValue("password","");
+                      reset();
+                    }}
                   >
                     Login
                   </button>

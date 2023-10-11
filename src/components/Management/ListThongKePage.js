@@ -61,14 +61,14 @@ const ListThongKePage = () => {
     const optionNV = [
         { value: 'maNhanVien', label: 'Mã Nhân Viên' },
         { value: 'tenNhanVien', label: 'Tên Nhân Viên' },
-        { value: 'soLuong', label: 'Số Lượng Bán Được' },
+        { value: 'soLuongBan', label: 'Số Lượng Bán Được' },
         { value: 'doanhThu', label: 'Doanh Thu' },
         { value: 'loiNhuan', label: 'Lợi Nhuận' }
     ]
     const optionSP = [
         { value: 'maSanPham', label: 'Mã Sản Phẩm' },
         { value: 'tenSanPham', label: 'Tên Sản Phẩm' },
-        { value: 'soLuong', label: 'Số Lượng Bán Được' },
+        { value: 'soLuongBan', label: 'Số Lượng Bán Được' },
         { value: 'doanhThu', label: 'Doanh Thu' },
         { value: 'loiNhuan', label: 'Lợi Nhuận' }
     ]
@@ -266,7 +266,7 @@ const ListThongKePage = () => {
                                                 <th style={{width:'15%'}}>
                                                     <div className='d-flex align-items-center justify-content-between'>
                                                         <p className='m-0'>Số Lượng Bán Được</p>
-                                                        <button className='btn btn-light' onClick={() => { handleSort("soLuong") }}><i className="fa-solid fa-filter"></i></button>
+                                                        <button className='btn btn-light' onClick={() => { handleSort("soLuongBan") }}><i className="fa-solid fa-filter"></i></button>
                                                     </div>
                                                 </th>
                                                 <th>Doanh Thu</th>
@@ -284,7 +284,7 @@ const ListThongKePage = () => {
                                                 <th style={{width:'15%'}}>
                                                     <div className='d-flex align-items-center justify-content-between'>
                                                         <p className='m-0'>Số Lượng Bán Được</p>
-                                                        <button className='btn btn-light' onClick={() => { handleSort("soLuong") }}><i className="fa-solid fa-filter"></i></button>
+                                                        <button className='btn btn-light' onClick={() => { handleSort("soLuongBan") }}><i className="fa-solid fa-filter"></i></button>
                                                     </div>
                                                 </th>
                                                 <th>Doanh Thu</th>
@@ -311,7 +311,7 @@ const ListThongKePage = () => {
                                                     {typeThongKe === "thongKeSanPham" ? hd.tenSanPham : hd.tenNhanVien}
                                                 </td>
                                                 <td>
-                                                    {hd.soLuong}
+                                                    {hd.soLuongBan}
                                                 </td>
                                                 <td>
                                                     {hd.doanhThu}
