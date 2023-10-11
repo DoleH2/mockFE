@@ -242,10 +242,10 @@ const ListHoaDonNHPage = () => {
                                                     {
                                                         dataInfoHD.map((info, idx) => (
                                                             <tr key={idx}>
-                                                                <td>{info.maChiTietHoaDonNhapHang}</td>
+                                                                <td className='text-end'>{info.maChiTietHoaDonNhapHang}</td>
                                                                 <td>{info.sanPhamDTO.tenSanPham}</td>
-                                                                <td>{Number(info.soLuong).toLocaleString()}</td>
-                                                                <td>{Number(info.sanPhamDTO.giaVon).toLocaleString()}</td>
+                                                                <td className='text-end'>{Number(info.soLuong).toLocaleString()}</td>
+                                                                <td className='text-end'>{Number(info.sanPhamDTO.giaVon).toLocaleString()}</td>
                                                             </tr>
 
                                                         ))

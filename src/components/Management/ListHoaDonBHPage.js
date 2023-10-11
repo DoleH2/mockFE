@@ -245,12 +245,12 @@ const ListHoaDonBHPage = () => {
                                                     {
                                                         dataInfoHD.map((info, idx) => (
                                                             <tr key={idx}>
-                                                                <td>{info.maChiTietHoaDonBanHang}</td>
+                                                                <td className='text-end'>{info.maChiTietHoaDonBanHang}</td>
                                                                 <td>{info.tenSanPham}</td>
-                                                                <td>{info.maHoaDonBanHang}</td>
-                                                                <td>{Number(info.soLuong).toLocaleString()}</td>
-                                                                <td>{Number(info.giaNiemYetHienTai).toLocaleString()}</td>
-                                                                <td>{Number(info.giaBanThuc).toLocaleString()}</td>
+                                                                <td className='text-end'>{info.maHoaDonBanHang}</td>
+                                                                <td className='text-end'>{Number(info.soLuong).toLocaleString()}</td>
+                                                                <td className='text-end'>{Number(info.giaNiemYetHienTai).toLocaleString()}</td>
+                                                                <td className='text-end'>{Number(info.giaBanThuc).toLocaleString()}</td>
                                                             </tr>
 
                                                         ))

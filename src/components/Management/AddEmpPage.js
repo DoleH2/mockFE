@@ -1,6 +1,6 @@
 import MenuSide from "./MenuSide";
 import { useForm } from 'react-hook-form';
-import {configMes,validateGioiTinh,validateRepassword} from "../../Validate/validateEmp";
+import {configMes,validateDate,validateGioiTinh,validateRepassword} from "../../Validate/validateEmp";
 import { useNavigate } from "react-router-dom";
 import { postRequest } from '../../axios/httpRequest';
 import { useState } from "react";
@@ -34,6 +34,7 @@ const AddEmpPage = () => {
                 console.log(result);
                 changeRouter("/list-emp",{status:'success',message:'Thêm mới nhân viên, account '+result.maNhanVien});
             } catch (error) {
+                console.log(error);
                 if(error.response.status === 400){
                     const cloneErr = { ...error.response.data }
                     await setErrorField(cloneErr);
@@ -102,7 +103,8 @@ const AddEmpPage = () => {
                                 <input type="date" id="ngaySinh" name="ngaySinh" style={{ maxWidth: '500px', background: '#F8FAFC' }}
                                     className="form-control"
                                     {...register("ngaySinh", {
-                                        required:{value:true,message:configMes.REQ}
+                                        required:{value:true,message:configMes.REQ},
+                                        validate:(value)=>validateDate(value)
                                     })}
                                 />
                                 {errors.ngaySinh && <p className="text-danger ps-1 m-0">{errors.ngaySinh.message}</p>}

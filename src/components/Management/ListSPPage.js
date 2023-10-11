@@ -226,9 +226,9 @@ const ListSPPage = () => {
                                                 <td>{sp.mauSac}</td>
                                                 <td>{sp.camera}</td>
                                                 <td>{sp.boNhoTrong}</td>
-                                                <td className='text-end'>{sp.soLuong}</td>
-                                                <td className='text-end'>{(sp.giaVon).toLocaleString()}</td>
-                                                <td className='text-end'>{(sp.giaNiemYet.toLocaleString())}</td>
+                                                <td className='text-end'>{Number(sp.soLuong).toLocaleString()}</td>
+                                                <td className='text-end'>{Number(sp.giaVon).toLocaleString()}</td>
+                                                <td className='text-end'>{Number(sp.giaNiemYet).toLocaleString()}</td>
 
                                                 <td style={{ width: '10%', minWidth: '100px', maxWidth: '150px' }}>
                                                     <div className="d-flex gap-2 justify-content-around">
