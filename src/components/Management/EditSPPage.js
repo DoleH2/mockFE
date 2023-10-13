@@ -415,7 +415,7 @@ const EditSPPage = () => {
                   style={{ maxWidth: "500px", width: "fit-content" }}
                   className="btn btn-success form-control px-3 py-2 rounded-0"
                 >
-                  <i class="fa-solid fa-pen fa-sm me-2"></i>Update
+                  <i className="fa-solid fa-pen fa-sm me-2"></i>Update
                 </button>
               </div>
             </form>

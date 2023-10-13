@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { postRequest, putRequest } from '../../axios/httpRequest';
 import { useEffect, useRef, useState } from "react";
 import Toast from "../utils/Toast";
-import { configMes, validateGioiTinh } from "../../Validate/validateEmp";
+import { configMes, validateDate, validateGioiTinh } from "../../Validate/validateEmp";
 
 
 const EditKHPage = () => {
@@ -126,7 +126,8 @@ const EditKHPage = () => {
                                 <input type="date" id="ngaySinh" name="ngaySinh" style={{ maxWidth: '500px', background: '#F8FAFC' }}
                                     className="form-control"
                                     {...register("ngaySinh", {
-                                        required:{value:true,message:configMes.REQ}
+                                        required:{value:true,message:configMes.REQ},
+                                        validate:(value)=>validateDate(value)
                                     })}
                                 />
                                 {errors.ngaySinh && <p className="text-danger ps-1 m-0">{errors.ngaySinh.message}</p>}

@@ -165,7 +165,7 @@ const EditNCCPage = () => {
                                 <button type="submit" style={{ maxWidth: '500px', width: 'fit-content' }}
                                     disabled={!clickSubmit}
                                     className="btn btn-success form-control px-3 py-2 rounded-0"
-                                ><i class="fa-solid fa-pen fa-sm me-2"></i>Update</button>
+                                ><i className="fa-solid fa-pen fa-sm me-2"></i>Update</button>
                             </div>
                         </form>
 
