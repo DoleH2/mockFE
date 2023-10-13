@@ -109,23 +109,6 @@ const ListThongKePage = () => {
     const [fieldSort, setFieldSort] = useState("loiNhuan");
     const [typeSort, setTypeSort] = useState(true);
 
-
-    // const handleSort = (field) => {
-    //     if(fieldSort === field){
-    //         if (typeSort) {
-    //             dataDisplay.sort((a, b) => a[field] - b[field]);
-    //             setTypeSort(false);
-    //         } else {
-    //             dataDisplay.sort((a, b) => -(a[field] - b[field]));
-    //             setTypeSort(true);
-    //         }
-    //     }else{
-    //         dataDisplay.sort((a, b) => a[field] - b[field]);
-    //         setTypeSort(false);
-    //     }
-    //     setFieldSort(field);
-    //     setDataDisplay(dataDisplay);
-    // }
     const handleSort = (field) => {
         if(fieldSort === field){
             if (typeSort) {
@@ -168,6 +151,14 @@ const ListThongKePage = () => {
         }
 
     },[valueSearch])
+    useEffect(()=>{
+        setCurrentPage(0);
+        const listPaging = document.getElementsByClassName('pagination')[0];
+        const pageOne = listPaging && listPaging.getElementsByTagName('li')[1];
+        if(pageOne){
+            pageOne.getElementsByTagName('a')[0].click();
+        }
+    },[data])
     ////xử lý khi click sang trang khác
     const handlePageChange = (selectPage) => {
         setCurrentPage(selectPage.selected);
