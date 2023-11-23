@@ -144,7 +144,7 @@ const ListHoaDonBHPage = () => {
                         <div className="frame-btn d-flex gap-3 m-2 justify-content-between">
                             {/* frame select search */}
                             <div className='frame-select-search w-50'>
-                                <Select className='form-control border-0 w-100 p-0' options={options}
+                                <Select className='form-control border-0 w-100 p-0' placeholder="Chọn mục tìm kiếm" options={options}
                                     isMulti
                                     value={typeSearch}
                                     onChange={handleChangeSearch}
@@ -163,7 +163,7 @@ const ListHoaDonBHPage = () => {
                             </div>
                             {/* end frame select search */}
                             <div className='frame-search d-flex rounded border'>
-                                <input className='form-control border-0' placeholder='Search...'
+                                <input className='form-control border-0' placeholder='Tìm kiếm'
                                     onChange={(e) => {
                                         setValueSearch(e.target.value);
                                         handleSubmitSearch(e.target.value, typeSearch)
@@ -179,11 +179,11 @@ const ListHoaDonBHPage = () => {
                                 <thead className='table-light'>
                                     <tr>
                                         <th style={{ width: '10%' }}>Mã HĐBH</th>
-                                        <th style={{ width: '15%' }}>Account NV</th>
-                                        <th style={{ width: '20%' }}>Tên KH</th>
-                                        <th>Thời Gian BH</th>
+                                        <th style={{ width: '15%' }}>Account Nhân Viên</th>
+                                        <th style={{ width: '20%' }}>Tên Khách Hàng</th>
+                                        <th>Thời Gian Bán Hàng</th>
                                         <th>Tổng Hóa Đơn</th>
-                                        <th>Action</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody id="body-table">
@@ -209,7 +209,7 @@ const ListHoaDonBHPage = () => {
                                                     <div className="mx-auto gap-2">
                                                         <button className="btn btn-light border border-0 px-3"
                                                             data-bs-toggle="modal" data-bs-target="#exampleModal1"
-                                                            onClick={() => { handleClickInfo(hd.maHoaDonBanHang, hd.chiTietHoaDonBanHang) }}
+                                                            onClick={() => { handleClickInfo(hd.maHoaDonBanHang, hd) }}
                                                         >
                                                             <i className="fa-solid fa-info"></i>
                                                         </button>
@@ -223,7 +223,7 @@ const ListHoaDonBHPage = () => {
                            
                             {/* modal info hoa don */}
                             <div className="modal fade" id="exampleModal1" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div className="modal-dialog" style={{ minWidth: '600px', width: '50%' }}>
+                                <div className="modal-dialog" style={{ minWidth: '850px', width: '50%' }}>
                                     <div className="modal-content w-100">
                                         <div className="modal-header">
                                             <h1 className="modal-title fs-5" id="exampleModalLabel">Chi tiết hóa đơn bán hàng {maHDBH}</h1>
@@ -233,17 +233,19 @@ const ListHoaDonBHPage = () => {
                                             <table className='table table-bordered table-striped'>
                                                 <thead>
                                                     <tr>
-                                                        <th style={{ width: '20%' }}>Mã CTHD Bán Hàng</th>
+                                                        <th style={{ width: '10%' }}>Mã CTHDBH</th>
                                                         <th style={{ width: '20%' }}>Tên Sản Phẩm</th>
-                                                        <th style={{ width: '20%' }}>Mã Hóa Đơn Bán Hàng</th>
+                                                        <th style={{ width: '10%' }}>Mã HĐ Bán Hàng</th>
                                                         <th>Số Lượng</th>
                                                         <th>Giá Niêm Yết</th>
-                                                        <th>Giá Bán Thực</th>
+                                                        <th>Giá Bán</th>
+                                                        <th>Thành Tiền</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     {
-                                                        dataInfoHD.map((info, idx) => (
+                                                        dataInfoHD.chiTietHoaDonBanHang && dataInfoHD.chiTietHoaDonBanHang.length > 0 &&
+                                                        dataInfoHD.chiTietHoaDonBanHang.map((info, idx) => (
                                                             <tr key={idx}>
                                                                 <td className='text-end'>{info.maChiTietHoaDonBanHang}</td>
                                                                 <td>{info.tenSanPham}</td>
@@ -251,6 +253,7 @@ const ListHoaDonBHPage = () => {
                                                                 <td className='text-end'>{Number(info.soLuong).toLocaleString()}</td>
                                                                 <td className='text-end'>{Number(info.giaNiemYetHienTai).toLocaleString()}</td>
                                                                 <td className='text-end'>{Number(info.giaBanThuc).toLocaleString()}</td>
+                                                                <td className='text-end'>{(Number(info.soLuong)*Number(info.giaBanThuc)).toLocaleString()}</td>
                                                             </tr>
 
                                                         ))
@@ -258,6 +261,9 @@ const ListHoaDonBHPage = () => {
 
                                                 </tbody>
                                             </table>
+                                            <div className='text-end'>
+                                                    Tổng cộng : <span className='fw-bold'>{Number(dataInfoHD.tongHoaDon).toLocaleString()}</span>
+                                            </div>
                                         </div>
                                         <div className="modal-footer">
                                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
@@ -268,8 +274,8 @@ const ListHoaDonBHPage = () => {
                             {/* end modal info hoa don */}
                             {/* phân trang */}
                             <ReactPaginate
-                                previousLabel="Previous"
-                                nextLabel="Next"
+                                previousLabel="<"
+                                nextLabel=">"
                                 breakLabel={'...'}
                                 // pageRangeDisplayed={3}
                                 initialSelected={currentPage}

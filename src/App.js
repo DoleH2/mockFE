@@ -36,7 +36,7 @@ function App() {
   return (
     <Routes>
       <Route index path="/" exact element={<HomePage></HomePage>} />
-      <Route
+      {/* <Route
         path="/management"
         element={
           <Guard condition={[1,2]}>
@@ -194,7 +194,7 @@ function App() {
             <ListThongKePage />
           </Guard>
         }
-      />
+      /> */}
 
       <Route path="/error" exact element={<ErrorPage></ErrorPage>} />
       <Route path="*" element={<Navigate to="/error" />} />

@@ -15,7 +15,7 @@ const Toast = ({toastStatus,onClose,message})=>{
             <div className="toast align-items-center border-danger" role="alert" aria-live="assertive" aria-atomic="true">
                 <div className="d-flex">
                     <div className="toast-body text-danger">
-                        {message || 'Error ! Vui lòng thử lại'}
+                        {message || 'Xảy ra lỗi, vui lòng thử lại'}
                     </div>
                     <button type="button" className="btn btn-close me-2 m-auto" onClick={() => {onClose('')}}></button>
                 </div>

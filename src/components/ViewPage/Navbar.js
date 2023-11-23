@@ -15,7 +15,7 @@ const Navbar = () => {
     register,
     handleSubmit,
     formState: { errors },
-    setValue, setError, clearErrors,reset
+    setValue, setError, clearErrors, reset
   } = useForm();
 
   const handleChangeLogin = () => {
@@ -40,8 +40,8 @@ const Navbar = () => {
         console.log(error);
         if (error.response && error.response.data && error.response.status === 400) {
           await setErrorField(error.response.data);
-        }else{
-          changeRouter("/error",error);
+        } else {
+          changeRouter("/error", error);
         }
       }
     }
@@ -58,18 +58,18 @@ const Navbar = () => {
     fetchApi();
   };
   //tắt modal khi login thành công
-  useEffect(()=>{
-    if(login){
+  useEffect(() => {
+    if (login) {
       document.getElementsByClassName('btn-close')[0].click();
     }
-  },[login])
+  }, [login])
 
   return (
     <div
       className="container-fluid frame-navbar mb-2 p-0"
       style={{ background: "#2B2D31", minWidth: "720px" }}
     >
-      <nav className="navbar p-0 navbar-expand-lg navbar-light">
+      <nav className="container navbar p-0 navbar-expand-lg navbar-light">
         <a
           className="h5 m-0 mr-2 navbar-brand d-flex align-items-center p-0"
           href="#"
@@ -239,9 +239,9 @@ const Navbar = () => {
                     href="#"
                     data-bs-toggle="modal"
                     data-bs-target="#modalLogin"
-                    onClick={()=>{
-                      setValue("username","");
-                      setValue("password","");
+                    onClick={() => {
+                      setValue("username", "");
+                      setValue("password", "");
                       reset();
                     }}
                   >
@@ -283,14 +283,13 @@ const Navbar = () => {
                     <div className="modal-body">
                       <div className="frame-input mb-3">
                         <label htmlFor="input-acc" className="fs-6">
-                          Account
+                          Tài khoản
                         </label>
                         <input
                           type="text"
                           id="input-acc"
                           style={{ maxWidth: "500px" }}
                           className="form-control"
-                          placeholder="Nhập tên tài khoản"
                           {...register("username", {
                             onChange: (e) => { handleChangeLogin() }
                           })}
@@ -298,14 +297,13 @@ const Navbar = () => {
                       </div>
                       <div className="frame-input mb-3">
                         <label htmlFor="input-pass" className="fs-6">
-                          Password
+                          Mật khẩu
                         </label>
                         <input
                           type="password"
                           id="input-pass"
                           style={{ maxWidth: "500px" }}
                           className="form-control"
-                          placeholder="Nhập mật khẩu"
                           {...register("password", {
                             onChange: (e) => { handleChangeLogin() }
                           })}
@@ -320,14 +318,14 @@ const Navbar = () => {
                         className="btn btn-secondary"
                         data-bs-dismiss="modal"
                       >
-                        Close
+                        Đóng
                       </button>
                       <button
                         type="submit"
                         className="btn btn-success"
                       // data-bs-dismiss="modal"
                       >
-                        Login
+                        Đăng nhập
                       </button>
                     </div>
                   </div>
@@ -343,3 +341,5 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+

@@ -72,14 +72,14 @@ const EditNCCPage = () => {
             {/* content */}
             <div className='frame-view-contents w-100 bg-white p-2' style={{ marginLeft: '250px' }}>
                 <div className="frame-content border shadow rounded p-2 mx-auto" style={{ width: 'fit-content', backgroundColor: '#f3f3f3' }}>
-                    {/* button back */}
+                    {/* button Quay về */}
                     <button type="button" style={{ maxWidth: '500px', width: 'fit-content' }}
                         className="btn form-control rounded-0 p-1"
                         onClick={() => { changeRouter('/list-ncc') }}
-                    ><i className="fa-solid fa-arrow-left me-2"></i>Back</button>
-                    {/* end button back */}
+                    ><i className="fa-solid fa-arrow-left me-2"></i>Quay về</button>
+                    {/* end button Quay về */}
                     <div className="title-body justify-content-center border-bottom d-flex">
-                        <p className="fs-4 mb-2">Edit Nhà Cung Cấp</p>
+                        <p className="fs-4 mb-2">Chỉnh sửa Nhà Cung Cấp</p>
                     </div>
                     <div
                         className="container frame-input m-0 rounded px-2 py-1"

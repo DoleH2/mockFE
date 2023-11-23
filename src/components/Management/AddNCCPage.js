@@ -32,6 +32,7 @@ const AddNCCPage = () => {
                 );
                 changeRouter("/list-ncc", { status: 'success', message: 'Thêm nhà cung cấp thành công' });
             } catch (error) {
+                console.log(error);
                 const cloneErr = { ...error.response.data }
                 await setErrorField(cloneErr);
                 setToastStatus({ status: 'error', message: error.message })
@@ -59,12 +60,12 @@ const AddNCCPage = () => {
             {/* content */}
             <div className='frame-view-contents w-100 bg-white p-2' style={{ marginLeft: '250px' }}>
                 <div className="frame-content border shadow rounded p-2 mx-auto" style={{ width: 'fit-content', backgroundColor: '#f3f3f3' }}>
-                    {/* button back */}
+                    {/* button Quay về */}
                     <button type="button" style={{ maxWidth: '500px', width: 'fit-content' }}
                         className="btn form-control rounded-0 p-1"
                         onClick={() => { changeRouter('/list-ncc') }}
-                    ><i className="fa-solid fa-arrow-left me-2"></i>Back</button>
-                    {/* end button back */}
+                    ><i className="fa-solid fa-arrow-left me-2"></i>Quay về</button>
+                    {/* end button Quay về */}
                     <div className="title-body justify-content-center border-bottom d-flex">
                         <p className="fs-4 mb-2">Thêm Nhà Cung Cấp</p>
                     </div>
@@ -82,7 +83,7 @@ const AddNCCPage = () => {
                                     placeholder="Nhập tên nhà cung cấp"
                                     {...register("tenNhaCungCap", {
                                         required: { value: true, message: configMes.REQ },
-                                        pattern:{value:/^[a-zA-Z0-9 ]/,message:configMes.HO_TEN},
+                                        pattern: { value: /^[a-zA-Z0-9 ]{0,}$/, message: configMes.HO_TEN },
                                         maxLength: { value: 50, message: 'Toi da 50 ki tu' }
                                     })}
                                 />
@@ -98,7 +99,7 @@ const AddNCCPage = () => {
                                     placeholder="Nhập email nhà cung cấp"
                                     {...register("email", {
                                         required: { value: true, message: configMes.REQ },
-                                        pattern: { value: /^[a-zA-Z0-9._%+-]{5,20}@[a-zA-Z0-9.-]{3,10}\.[a-zA-Z]{3,10}$/, message: 'Email có format abcde@xyz.com' },
+                                        pattern: { value: /^[a-zA-Z0-9._%+-]{5,20}@[a-zA-Z0-9.-]{3,10}\.[a-zA-Z]{3,10}$/, message: 'Email có format abcde@xyz.jqk' },
                                         maxLength: { value: 100, message: 'Toi da 100 ki tu' }
                                     })}
                                 />
@@ -113,7 +114,7 @@ const AddNCCPage = () => {
                                     className="form-control"
                                     placeholder="Nhập số điện thoại nhà cung cấp"
                                     {...register("soDienThoai", {
-                                        pattern: { value: /^09[0-9]{8}$/, message: 'SDT theo format 09xxxxxxxx' },
+                                        pattern: { value: /^09[0-9]{8}$/, message: 'SDT theo format 09xxxxxxxx, x là số từ 0-9' },
                                         required: { value: true, message: configMes.REQ }
                                     })}
                                 />
@@ -130,7 +131,7 @@ const AddNCCPage = () => {
                                     placeholder="Nhập địa chỉ nhà cung cấp"
                                     {...register("diaChi", {
                                         required: { value: true, message: configMes.REQ },
-                                        pattern: { value: /^[a-zA-Z0-9 ]{1,}$/, message: 'Chỉ chứa chữ cái, khoảng cách, số và dấu /' },
+                                        pattern: { value: /^[a-zA-Z0-9 /]{0,}$/, message: 'Chỉ chứa chữ cái, khoảng cách, số và dấu /' },
                                         maxLength: { value: 100, message: 'Tối đa 100 kí tự' }
                                     })}
                                 />
@@ -143,7 +144,7 @@ const AddNCCPage = () => {
                                 <button type="submit" style={{ maxWidth: '500px', width: 'fit-content' }}
                                     disabled={!clickSubmit}
                                     className="btn btn-success form-control px-3 py-2 rounded-0"
-                                ><i className="fa-solid fa-plus me-2"></i>Add</button>
+                                ><i className="fa-solid fa-plus me-2"></i>Thêm</button>
                             </div>
                         </form>
 

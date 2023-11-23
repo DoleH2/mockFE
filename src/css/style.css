@@ -1,68 +1,85 @@
-html{
+html {
     font-family: inherit;
 }
-.active{
+
+.active {
     font-weight: bold;
 }
-.container{
+
+.container {
     max-width: 1140px;
     /* min-width: 775px; */
 }
-.carousel-item img{
-    object-fit:'cover'
+
+.carousel-item img {
+    object-fit: 'cover'
 }
 
-.background{
+.background {
     min-width: 775px;
-    background-image: url('../img/event/638302860938352484_desk-header-bg.png');
-    background-repeat: no-repeat;
-    background-size:2200px;
-    background-position: top;
-    background-color: #E15753;
+    background-image: url('../img/body_bg.png');
+    background-repeat: repeat;
+    background-position: center;
+    /* background-size: 2200px; */
 }
-.nav-item a.nav-link,.btn-toggle-login{
+
+.nav-item a.nav-link,
+.btn-toggle-login {
     color: #b8b8b8 !important;
 }
-.nav-item:hover,.btn-toggle-login:hover{
+
+.nav-item:hover,
+.btn-toggle-login:hover {
     background-color: #55575e !important;
 }
-.nav-item:hover a.nav-link,.btn-toggle-login:hover{
+
+.nav-item:hover a.nav-link,
+.btn-toggle-login:hover {
     color: white !important;
 }
-.frame-login{
-    border-left:1px white solid;
+
+.frame-login {
+    border-left: 1px white solid;
 }
-.drop-btn .dropdown-menu-custom{
+
+.drop-btn .dropdown-menu-custom {
     display: none;
     position: absolute;
     opacity: 0;
     transition: opacity .5s;
     border-radius: 5px;
 }
-.drop-btn:hover .dropdown-menu-custom{
+
+.drop-btn:hover .dropdown-menu-custom {
     display: block;
     opacity: 1;
     transition: opacity .5s;
 }
-.navbar-toggler{
+
+.navbar-toggler {
     width: 45px;
     height: 40px;
 }
-.navbar-toggler:hover i{
+
+.navbar-toggler:hover i {
     color: white;
 }
-.navbar-toggler i{
+
+.navbar-toggler i {
     color: rgb(148, 148, 148);
 }
-.banner-items-small{
+
+.banner-items-small {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.frame-featured-product{
+
+.frame-featured-product {
     background: linear-gradient(rgb(147 22 22), rgb(0, 0, 0)) 0% 0% / cover;
 }
-.card{
+
+.card {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -71,23 +88,28 @@ html{
     height: 420px;
     max-height: 420px; */
 }
-.card .card-body{
+
+.card .card-body {
     height: 125px;
     max-height: 125px;
 }
-.card .card-img{
+
+.card .card-img {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.card:hover{
+
+.card:hover {
     transform: scale(1);
     transition: transform 0.2s;
 }
-.card:hover img{
+
+.card:hover img {
     transform: scale(1.1);
 }
-.card .card-title{
+
+.card .card-title {
     max-width: 230px;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -95,72 +117,82 @@ html{
     text-decoration: none;
     display: block;
 }
-.card img{
+
+.card img {
     width: 90%;
     text-align: center;
-    margin:0 auto;
+    margin: 0 auto;
     transition: .5s;
 }
-.card .old-price{
+
+.card .old-price {
     color: gray;
     text-decoration: line-through;
 }
-.swiper{
+
+.swiper {
     overflow: hidden;
     border-radius: 5px;
 }
-.frame-slideshow .swiper{
+
+.frame-slideshow .swiper {
     margin-left: 0;
 }
-.frame-slideshow .swiper-slide{
+
+.frame-slideshow .swiper-slide {
     width: 50%;
     overflow: hidden;
 }
-.frame-slideshow .swiper-slide img{
+
+.frame-slideshow .swiper-slide img {
     width: 100%;
     object-fit: cover;
 }
-.swiper-wrapper{
+
+.swiper-wrapper {
     display: flex;
 }
 
-.list-featured .swiper-slide{
+.list-featured .swiper-slide {
     width: 25% !important;
     /* min-width: 230px; */
     overflow: hidden;
 }
-.swiper-button-prev, .swiper-button-next{
+
+.swiper-button-prev,
+.swiper-button-next {
     color: gray !important;
 }
 
-.list-phone-product .card:hover{
-    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+.list-phone-product .card:hover {
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
 }
 
-.list-phone-product .frame-card{
+.list-phone-product .frame-card {
     min-width: 230px;
 }
 
 @media (max-width:991px) {
-    form.form-search-navbar{
+    form.form-search-navbar {
         margin: 10px 0;
         width: 100% !important;
     }
-    div.frame-search{
+
+    div.frame-search {
         width: 100%;
         margin: 0 !important;
     }
-    .frame-login.align-items-center{
+
+    .frame-login.align-items-center {
         border-left: 0 !important;
         border-top: 1px white solid;
         width: 100% !important;
         margin: 10px 0 !important;
     }
-    .frame-login .btn-toggle-login{
-        margin:0 !important;
+
+    .frame-login .btn-toggle-login {
+        margin: 0 !important;
         padding: 10px 0 !important;
         width: 100% !important;
     }
 }
-
-

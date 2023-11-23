@@ -70,7 +70,7 @@ const AddEmpPage = () => {
                     <button type="button" style={{ maxWidth: '500px', width: 'fit-content' }}
                         className="btn form-control rounded-0 p-1"
                         onClick={() => { changeRouter('/list-emp') }}
-                    ><i className="fa-solid fa-arrow-left me-2"></i>Back</button>
+                    ><i className="fa-solid fa-arrow-left me-2"></i>Quay về</button>
                     {/* end button back */}
                     <div className="title-body justify-content-center border-bottom d-flex">
                         <p className="fs-4 mb-2">Thêm Nhân Viên</p>
@@ -163,7 +163,7 @@ const AddEmpPage = () => {
                                         className="form-control"
                                         {...register("password", {
                                             required: { value: true, message: 'Vui lòng điền trường này' },
-                                            maxLength: { value: 20, message: 'Toi da 20 ki tu' },
+                                            maxLength: { value: 20, message: 'Tối đa 20 kí tự' },
                                             pattern: { value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$/, message: 'Ít nhất 1 chữ hoa, 1 chữ thường, 1 kí tự đặc biệt và 1 số. Độ dài ít nhất 8 kí tự' }
                                         })}
                                     />
@@ -190,7 +190,7 @@ const AddEmpPage = () => {
                                 <button type="submit" style={{ maxWidth: '500px', width: 'fit-content' }}
                                 disabled={!clickSubmit}
                                     className="btn btn-success form-control px-3 py-2 rounded-0"
-                                ><i className="fa-solid fa-plus me-2"></i>Add</button>
+                                ><i className="fa-solid fa-plus me-2"></i>Thêm</button>
                             </div>
                         </form>
 

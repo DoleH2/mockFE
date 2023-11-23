@@ -163,7 +163,7 @@ const ListKHPage = () => {
                             />
                             {/* frame select search */}
                             <div className='frame-select-search w-50'>
-                                <Select className='form-control border-0 w-100 p-0' options={options}
+                                <Select placeholder="Chọn mục tìm kiếm" className='form-control border-0 w-100 p-0' options={options}
                                     isMulti
                                     value={typeSearch}
                                     onChange={handleChangeSearch}
@@ -182,7 +182,7 @@ const ListKHPage = () => {
                             </div>
                             {/* end frame select search */}
                             <div className='frame-search d-flex rounded border'>
-                                <input className='form-control border-0' placeholder='Search...'
+                                <input className='form-control border-0' placeholder='Tìm kiếm'
                                     onChange={(e) => {
                                         setValueSearch(e.target.value);
                                         handleSubmitSearch(e.target.value, typeSearch)
@@ -199,11 +199,11 @@ const ListKHPage = () => {
                                 <thead className='table-light'>
                                     <tr>
                                         <th>Mã KH</th>
-                                        <th>Tên KH</th>
+                                        <th>Tên Khách Hàng</th>
                                         <th>Ngày Sinh</th>
                                         <th>Giới Tính</th>
                                         <th>Số Điện Thoại</th>
-                                        <th>Action</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
 
@@ -233,9 +233,9 @@ const ListKHPage = () => {
                                                         >
                                                             <i className="fa-regular fa-pen-to-square"></i>
                                                         </a>
-                                                        <a className="btn btn-light border text-danger border-0" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => { handleClickDelete(kh.maKhachHang) }}>
+                                                        {/* <a className="btn btn-light border text-danger border-0" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => { handleClickDelete(kh.maKhachHang) }}>
                                                             <i className="fa-solid fa-trash"></i>
-                                                        </a>
+                                                        </a> */}
                                                     </div>
                                                 </td>
                                             </tr>
@@ -245,7 +245,7 @@ const ListKHPage = () => {
                             </table>
                             {/* end table */}
                             {/* modal confirm xóa */}
-                            <div className="modal fade" id="exampleModal" data-delete={accDelete} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            {/* <div className="modal fade" id="exampleModal" data-delete={accDelete} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div className="modal-dialog">
                                     <div className="modal-content">
                                         <div className="modal-header">
@@ -266,12 +266,12 @@ const ListKHPage = () => {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> */}
                             {/* end modal confirm xóa */}
                             {/* phân trang */}
                             <ReactPaginate
-                                previousLabel="Previous"
-                                nextLabel="Next"
+                                previousLabel="<"
+                                nextLabel=">"
                                 breakLabel={'...'}
                                 // pageRangeDisplayed={3}
                                 marginPagesDisplayed={1}//số trang hiển thị bên trái và phải của trang đang chọn

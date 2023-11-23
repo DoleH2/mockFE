@@ -63,12 +63,12 @@ const AddSPPage = () => {
             {/* content */}
             <div className='frame-view-contents w-100 bg-white p-2' style={{ marginLeft: '250px' }}>
                 <div className="frame-content border shadow rounded p-2 mx-auto" style={{ width: 'fit-content', backgroundColor: '#f3f3f3' }}>
-                    {/* button back */}
+                    {/* button Quay về */}
                     <button type="button" style={{ maxWidth: '500px', width: 'fit-content' }}
                         className="btn form-control rounded-0 p-1"
                         onClick={() => { changeRouter('/list-sanpham') }}
-                    ><i className="fa-solid fa-arrow-left me-2"></i>Back</button>
-                    {/* end button back */}
+                    ><i className="fa-solid fa-arrow-left me-2"></i>Quay về</button>
+                    {/* end button Quay về */}
                     <div className="title-body justify-content-center border-bottom d-flex">
                         <p className="fs-4 mb-2">Thêm Sản Phẩm</p>
                     </div>
@@ -112,13 +112,12 @@ const AddSPPage = () => {
                                 {/* frame-input */}
                                 <div className="frame-input mb-2 w-50">
                                     <label htmlFor="ram" className="fs-6 fw-bold">RAM<span className="text-danger ms-1">*</span></label>
-                                    {/* lưu ý đặt name giống với key trong file json */}
                                     <input type="text" id="ram" name="ram" style={{ maxWidth: '500px', background: '#F8FAFC' }}
                                         className="form-control"
                                         placeholder="Nhập ram"
                                         {...register("ram", {
                                             required: { value: true, message: configMes.REQ },
-                                            pattern: { value: /^[0-9]{1,}GB$/, message: 'Format : [0-9]GB' },
+                                            pattern: { value: /^[0-9]{1,}GB$/, message: 'Vui lòng điền theo format : [0-9]GB' },
                                             maxLength: { value: 10, message: 'Tối đa 10 kí tự' }
                                         })}
                                     />
@@ -129,7 +128,6 @@ const AddSPPage = () => {
                                 {/* frame-input */}
                                 <div className="frame-input mb-2 w-50">
                                     <label htmlFor="cpu" className="fs-6 fw-bold">CPU<span className="text-danger ms-1">*</span></label>
-                                    {/* lưu ý đặt name giống với key trong file json */}
                                     <input type="text" id="cpu" name="cpu" style={{ maxWidth: '500px', background: '#F8FAFC' }}
                                         className="form-control"
                                         placeholder="Nhập cpu"
@@ -220,7 +218,7 @@ const AddSPPage = () => {
                                         className="form-control"
                                         placeholder="Nhập giá vốn"
                                         {...register("giaVon", {
-                                            required: { value: true, message: 'Vui lòng điền trường này' },
+                                            required: { value: true, message: configMes.REQ },
                                             min: { value: 1, message: 'Nhỏ nhất là 1' },
                                             max: { value: 1000000000, message: 'Lớn nhất là 1,000,000,000' }
                                         })}
@@ -236,7 +234,7 @@ const AddSPPage = () => {
                                         className="form-control"
                                         placeholder="Nhập giá bán"
                                         {...register("giaNiemYet", {
-                                            required: { value: true, message: 'Vui lòng điền trường này' },
+                                            required: { value: true, message: configMes.REQ },
                                             min: { value: 1, message: 'Nhỏ nhất là 1' },
                                             max: { value: 1000000000, message: 'Lớn nhất là 1,000,000,000' }
                                         })}
@@ -250,7 +248,7 @@ const AddSPPage = () => {
                                 <button type="submit" style={{ maxWidth: '500px', width: 'fit-content' }}
                                     disabled={!clickSubmit}
                                     className="btn btn-success form-control px-3 py-2 rounded-0"
-                                ><i className="fa-solid fa-plus me-2"></i>Add</button>
+                                ><i className="fa-solid fa-plus me-2"></i>Thêm</button>
                             </div>
                         </form>
 

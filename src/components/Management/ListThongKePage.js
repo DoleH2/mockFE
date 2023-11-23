@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 
 import ReactPaginate from 'react-paginate';
 import Select from 'react-select';
-import { set, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { getRequest, postRequest } from '../../axios/httpRequest';
 import { useNavigate } from 'react-router-dom';
 let listTKJSON = [];
@@ -110,7 +110,7 @@ const ListThongKePage = () => {
     const [typeSort, setTypeSort] = useState(true);
 
     const handleSort = (field) => {
-        if(fieldSort === field){
+        if (fieldSort === field) {
             if (typeSort) {
                 data.sort((a, b) => a[field] - b[field]);
                 setTypeSort(false);
@@ -118,7 +118,7 @@ const ListThongKePage = () => {
                 data.sort((a, b) => -(a[field] - b[field]));
                 setTypeSort(true);
             }
-        }else{
+        } else {
             data.sort((a, b) => a[field] - b[field]);
             setTypeSort(false);
         }
@@ -142,23 +142,23 @@ const ListThongKePage = () => {
         const curDataPage = data.slice(index, index + rowsPerPage);
         setDataDisplay([...curDataPage]);
     }, [currentPage, data])
-    useEffect(()=>{
+    useEffect(() => {
         setCurrentPage(0);
         const pagination = document.getElementsByClassName("pagination")[0];
-        const liPagination = pagination&&pagination.getElementsByTagName("li")[1];
-        if(liPagination){
+        const liPagination = pagination && pagination.getElementsByTagName("li")[1];
+        if (liPagination) {
             liPagination.getElementsByTagName("a")[0].click();
         }
 
-    },[valueSearch])
-    useEffect(()=>{
+    }, [valueSearch])
+    useEffect(() => {
         setCurrentPage(0);
         const listPaging = document.getElementsByClassName('pagination')[0];
         const pageOne = listPaging && listPaging.getElementsByTagName('li')[1];
-        if(pageOne){
+        if (pageOne) {
             pageOne.getElementsByTagName('a')[0].click();
         }
-    },[data])
+    }, [data])
     ////xử lý khi click sang trang khác
     const handlePageChange = (selectPage) => {
         setCurrentPage(selectPage.selected);
@@ -228,7 +228,7 @@ const ListThongKePage = () => {
                             <p>Tổng Doanh thu:
                                 <span className='fw-bold px-1'>
                                     {(Number(listTKJSON.tongDoanhThu)) === 0 || !listTKJSON.tongDoanhThu ?
-                                     0 : (Number(listTKJSON.tongDoanhThu)).toLocaleString()}
+                                        0 : (Number(listTKJSON.tongDoanhThu)).toLocaleString()}
                                 </span>
                                 VND</p>
                             <p>Tổng Lợi nhuận:
@@ -240,7 +240,7 @@ const ListThongKePage = () => {
                         <div className="frame-btn d-flex gap-3 m-2 justify-content-between">
                             {/* frame select search */}
                             <div className='frame-select-search w-50'>
-                                <Select className='form-control border-0 w-100 p-0'
+                                <Select placeholder="Chọn mục tìm kiếm" className='form-control border-0 w-100 p-0'
                                     options={typeThongKe === "thongKeSanPham" ? optionSP : typeThongKe === "thongKeNhanVien" ? optionNV : []}
                                     value={typeSearch}
                                     onChange={handleChangeSearch}
@@ -248,7 +248,7 @@ const ListThongKePage = () => {
                             </div>
                             {/* end frame select search */}
                             <div className='frame-search d-flex rounded border'>
-                                <input className='form-control border-0' placeholder='Search...'
+                                <input className='form-control border-0' placeholder='Tìm kiếm'
                                     onChange={(e) => {
                                         setValueSearch(e.target.value);
                                         handleSubmitSearch(e.target.value, typeSearch)
@@ -269,9 +269,9 @@ const ListThongKePage = () => {
                                     {
                                         typeThongKe === "thongKeSanPham" ? (
                                             <tr>
-                                                <th>Mã Sản Phẩm</th>
-                                                <th style={{width:'30%'}}>Tên Sản Phẩm</th>
-                                                <th style={{width:'15%'}}>
+                                                <th>Mã SP</th>
+                                                <th style={{ width: '30%' }}>Tên Sản Phẩm</th>
+                                                <th style={{ width: '15%' }}>
                                                     <div className='d-flex align-items-center justify-content-between'>
                                                         <p className='m-0'>Số Lượng Bán Được</p>
                                                         <button className='btn btn-light' onClick={() => { handleSort("soLuongBan") }}><i className="fa-solid fa-filter"></i></button>
@@ -287,9 +287,9 @@ const ListThongKePage = () => {
                                             </tr>
                                         ) : typeThongKe === "thongKeNhanVien" ? (
                                             <tr>
-                                                <th>Mã Nhân Viên</th>
-                                                <th style={{width:'30%'}}>Tên Nhân Viên</th>
-                                                <th style={{width:'15%'}}>
+                                                <th>Account</th>
+                                                <th style={{ width: '30%' }}>Tên Nhân Viên</th>
+                                                <th style={{ width: '15%' }}>
                                                     <div className='d-flex align-items-center justify-content-between'>
                                                         <p className='m-0'>Số Lượng Bán Được</p>
                                                         <button className='btn btn-light' onClick={() => { handleSort("soLuongBan") }}><i className="fa-solid fa-filter"></i></button>
@@ -312,7 +312,7 @@ const ListThongKePage = () => {
                                     {
                                         dataDisplay.map((hd, idx) => (
                                             <tr key={idx}>
-                                                <td style={{ width: '10%' }}>
+                                                <td className='text-center' style={{ width: '10%' }}>
                                                     {typeThongKe === "thongKeSanPham" ? hd.maSanPham : hd.maNhanVien}
                                                 </td>
                                                 <td style={{ width: '10%' }}>
@@ -336,8 +336,8 @@ const ListThongKePage = () => {
 
                             {/* phân trang */}
                             <ReactPaginate
-                                previousLabel="Previous"
-                                nextLabel="Next"
+                                previousLabel="<"
+                                nextLabel=">"
                                 breakLabel={'...'}
                                 // pageRangeDisplayed={3}
                                 marginPagesDisplayed={1}//số trang hiển thị bên trái và phải của trang đang chọn

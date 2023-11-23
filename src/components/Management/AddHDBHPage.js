@@ -80,7 +80,8 @@ const AddHDBHPage = () => {
         const result = await postRequest("/staff/invoice", data);
         changeRouter("/list-hdbh", { status: 'success', message: 'Thêm thành công' });
       } catch (error) {
-        console.log(error);
+        console.log('aaaa');
+        setClickSubmit(true);
         const cloneErr = { ...error.response.data }
         await setErrorField(cloneErr);
         setToastStatus({ status: 'error', message: error.message });
@@ -221,7 +222,7 @@ const AddHDBHPage = () => {
           className="frame-content border shadow rounded p-2 mx-auto"
           style={{ width: "fit-content", backgroundColor: "#f3f3f3" }}
         >
-          {/* button back */}
+          {/* button Quay về */}
           <button
             type="button"
             style={{ maxWidth: "500px", width: "fit-content" }}
@@ -230,9 +231,9 @@ const AddHDBHPage = () => {
               changeRouter("/list-hdbh");
             }}
           >
-            <i className="fa-solid fa-arrow-left me-2"></i>Back
+            <i className="fa-solid fa-arrow-left me-2"></i>Quay về
           </button>
-          {/* end button back */}
+          {/* end button Quay về */}
           <div className="title-body justify-content-center border-bottom d-flex">
             <p className="fs-4 mb-2">Thêm Hóa Đơn Bán Hàng</p>
           </div>
@@ -623,7 +624,7 @@ const AddHDBHPage = () => {
                   style={{ maxWidth: "500px", width: "fit-content" }}
                   className="btn btn-success form-control px-3 py-2 rounded-0"
                 >
-                  <i className="fa-solid fa-plus me-2"></i>Add
+                  <i className="fa-solid fa-plus me-2"></i>Thêm
                 </button>
               </div>
             </form>

@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { postRequest } from '../../axios/httpRequest';
 import { useState } from "react";
 import Toast from "../utils/Toast";
-import { configMes, validateGioiTinh } from "../../Validate/validateEmp";
+import { configMes, validateDate, validateGioiTinh } from "../../Validate/validateEmp";
 
 
 const AddKHPage = () => {
@@ -61,12 +61,12 @@ const AddKHPage = () => {
             {/* content */}
             <div className='frame-view-contents w-100 bg-white p-2' style={{ marginLeft: '250px' }}>
                 <div className="frame-content border shadow rounded p-2 mx-auto" style={{ width: 'fit-content', backgroundColor: '#f3f3f3' }}>
-                    {/* button back */}
+                    {/* button Quay về */}
                     <button type="button" style={{ maxWidth: '500px', width: 'fit-content' }}
                         className="btn form-control rounded-0 p-1"
                         onClick={() => { changeRouter('/list-kh') }}
-                    ><i className="fa-solid fa-arrow-left me-2"></i>Back</button>
-                    {/* end button back */}
+                    ><i className="fa-solid fa-arrow-left me-2"></i>Quay về</button>
+                    {/* end button Quay về */}
                     <div className="title-body justify-content-center border-bottom d-flex">
                         <p className="fs-4 mb-2">Thêm Khách Hàng</p>
                     </div>
@@ -100,7 +100,8 @@ const AddKHPage = () => {
                                 <input type="date" id="ngaySinh" name="ngaySinh" style={{ maxWidth: '500px', background: '#F8FAFC' }}
                                     className="form-control"
                                     {...register("ngaySinh", {
-                                        required:{value:true,message:configMes.REQ}
+                                        required:{value:true,message:configMes.REQ},
+                                        validate : (e)=>validateDate(e)
                                     })}
                                 />
                                 {errors.ngaySinh && <p className="text-danger ps-1 m-0">{errors.ngaySinh.message}</p>}
@@ -159,7 +160,7 @@ const AddKHPage = () => {
                                     placeholder="Nhập số điện thoại khách hàng"
                                     {...register("soDienThoai", {
                                         required: { value: true, message: configMes.REQ },
-                                        pattern: { value: /^09[0-9]{8}$/, message: 'SDT theo format 09xxxxxxxx' }
+                                        pattern: { value: /^09[0-9]{8}$/, message: 'SDT theo format 09xxxxxxxx, x là số từ 0-9' }
                                     })}
                                 />
                                 {errors.soDienThoai && <p className="text-danger ps-1 m-0">{errors.soDienThoai.message}</p>}
@@ -172,7 +173,7 @@ const AddKHPage = () => {
                                 <button type="submit" style={{ maxWidth: '500px', width: 'fit-content' }} 
                                     disabled={!clickSubmit}
                                     className="btn btn-success form-control px-3 py-2 rounded-0"
-                                ><i className="fa-solid fa-plus me-2"></i>Add</button>
+                                ><i className="fa-solid fa-plus me-2"></i>Thêm</button>
                             </div>
                         </form>
 

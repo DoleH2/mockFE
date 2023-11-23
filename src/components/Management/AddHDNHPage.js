@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { getRequest, postRequest } from '../../axios/httpRequest';
 import { useEffect, useState } from "react";
 import Toast from "../utils/Toast";
+import { configMes } from "../../Validate/validateEmp";
 
 const AddHDNHPage = () => {
     // xử lý chuyển trang sang url khác
@@ -50,7 +51,8 @@ const AddHDNHPage = () => {
         const fetchApi = async () => {
             try {
                 const result = await postRequest("/staff/nhap_hang", data);
-                changeRouter("/list-hdnh", { status: 'success', message: 'Thêm thành công' });
+                console.log(result);
+                changeRouter("/list-hdnh", { status: 'success', message: 'Thêm thành công hoá đơn với mã ' + result.maHoaDonNhapHang });
             } catch (error) {
                 const cloneErr = { ...error.response.data }
                 await setErrorField(cloneErr);
@@ -126,12 +128,12 @@ const AddHDNHPage = () => {
             {/* content */}
             <div className='frame-view-contents w-100 bg-white p-2' style={{ marginLeft: '250px' }}>
                 <div className="frame-content border shadow rounded p-2 mx-auto" style={{ width: 'fit-content', backgroundColor: '#f3f3f3' }}>
-                    {/* button back */}
+                    {/* button Quay về */}
                     <button type="button" style={{ maxWidth: '500px', width: 'fit-content' }}
                         className="btn form-control rounded-0 p-1"
                         onClick={() => { changeRouter('/list-hdnh') }}
-                    ><i className="fa-solid fa-arrow-left me-2"></i>Back</button>
-                    {/* end button back */}
+                    ><i className="fa-solid fa-arrow-left me-2"></i>Quay về</button>
+                    {/* end button Quay về */}
                     <div className="title-body justify-content-center border-bottom d-flex">
                         <p className="fs-4 mb-2">Thêm Hóa Đơn Nhập Hàng</p>
                     </div>
@@ -149,7 +151,7 @@ const AddHDNHPage = () => {
                                 <select type="text" style={{ maxWidth: '700px' }}
                                     className="form-control"
                                     {...register("maNhaCungCap", {
-                                        required: { value: true, message: 'Vui long chon truong nay' }
+                                        required: { value: true, message: configMes.REQ }
                                     })}
                                 >
                                     <option value="">---Chọn Nhà Cung Cấp---</option>
@@ -185,7 +187,7 @@ const AddHDNHPage = () => {
                                                 <div className="d-flex gap-2">
                                                     <div className="frame-input mb-2" style={{ width: '35%' }}>
                                                         <label htmlFor={"chiTietHoaDonNhapHangDTO[" + idx + "].sanPhamDTO.maSanPham"} className="fs-6 fw-bold">
-                                                        Sản Phẩm<span className="text-danger ms-1">*</span>
+                                                            Sản Phẩm<span className="text-danger ms-1">*</span>
                                                         </label>
                                                         <select className="form-control"
                                                             {...register("chiTietHoaDonNhapHangDTO[" + idx + "].sanPhamDTO.maSanPham", {
@@ -211,19 +213,19 @@ const AddHDNHPage = () => {
 
                                                     <div className="frame-input mb-2">
                                                         <label htmlFor={`chiTietHoaDonNhapHangDTO[${idx}].soLuong`} className="fs-6 fw-bold">
-                                                        Số Lượng
-                                                        <span className="text-danger ms-1">*</span></label>
+                                                            Số Lượng
+                                                            <span className="text-danger ms-1">*</span></label>
                                                         <input type="number" id={`chiTietHoaDonNhapHangDTO[${idx}].soLuong`} style={{ maxWidth: '500px' }}
                                                             className="form-control"
                                                             placeholder="Nhập số lượng"
                                                             {...register("chiTietHoaDonNhapHangDTO[" + idx + "].soLuong", {
                                                                 required: { value: true, message: "Vui lòng nhập số lượng" },
-                                                                min:{value:1,message:"Nhỏ nhất là 1"},
-                                                                max:{value:1000000,message:"Tối đa là 1,000,000"},
-                                                                onChange: (e) => { 
+                                                                min: { value: 1, message: "Nhỏ nhất là 1" },
+                                                                max: { value: 1000000, message: "Tối đa là 1,000,000" },
+                                                                onChange: (e) => {
                                                                     handleChangeInputCTDH(idx, "soLuong", e.target.value);
-                                                                    setValue("chiTietHoaDonNhapHangDTO[" + idx + "].tongTien",e.target.value*element.sanPhamDTO.giaVon);
-                                                                 }
+                                                                    setValue("chiTietHoaDonNhapHangDTO[" + idx + "].tongTien", e.target.value * element.sanPhamDTO.giaVon);
+                                                                }
                                                             })}
                                                         />
                                                         {errors.chiTietHoaDonNhapHangDTO &&
@@ -242,7 +244,7 @@ const AddHDNHPage = () => {
                                                         <label className="fs-6 fw-bold">Tổng tiền</label>
                                                         <input type="text" style={{ maxWidth: '500px' }}
                                                             className="form-control" disabled={true}
-                                                            {...register("chiTietHoaDonNhapHangDTO[" + idx + "].tongTien",{
+                                                            {...register("chiTietHoaDonNhapHangDTO[" + idx + "].tongTien", {
 
                                                             })}
                                                         />
@@ -265,7 +267,7 @@ const AddHDNHPage = () => {
                                 <button type="submit" style={{ maxWidth: '500px', width: 'fit-content' }}
                                     disabled={!clickSubmit}
                                     className="btn btn-success form-control px-3 py-2 rounded-0"
-                                ><i className="fa-solid fa-plus me-2"></i>Add</button>
+                                ><i className="fa-solid fa-plus me-2"></i>Thêm</button>
                             </div>
                         </form>
 

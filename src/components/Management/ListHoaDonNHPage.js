@@ -146,7 +146,7 @@ const ListHoaDonNHPage = () => {
                             />
                             {/* frame select search */}
                             <div className='frame-select-search w-50'>
-                                <Select className='form-control border-0 w-100 p-0' options={options}
+                                <Select placeholder="Chọn mục tìm kiếm" className='form-control border-0 w-100 p-0' options={options}
                                     isMulti
                                     value={typeSearch}
                                     onChange={handleChangeSearch}
@@ -165,7 +165,7 @@ const ListHoaDonNHPage = () => {
                             </div>
                             {/* end frame select search */}
                             <div className='frame-search d-flex rounded border'>
-                                <input className='form-control border-0' placeholder='Search...'
+                                <input className='form-control border-0' placeholder='Tìm kiếm'
                                     onChange={(e) => {
                                         setValueSearch(e.target.value);
                                         handleSubmitSearch(e.target.value, typeSearch)
@@ -179,11 +179,11 @@ const ListHoaDonNHPage = () => {
                             <table className="table table-bordered table-striped">
                                 <thead className='table-light'>
                                     <tr>
-                                        <th style={{width:'10%'}}>Mã Hóa Đơn</th>
-                                        <th style={{width:'25%'}}>Tên Nhà Cung Cấp</th>
+                                        <th style={{ width: '10%' }}>Mã Hóa Đơn</th>
+                                        <th style={{ width: '25%' }}>Tên Nhà Cung Cấp</th>
                                         <th>Thời Gian</th>
                                         <th>Tổng Hóa Đơn</th>
-                                        <th>Action</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody id="body-table">
@@ -208,7 +208,8 @@ const ListHoaDonNHPage = () => {
                                                     <div className="d-flex gap-2 justify-content-center">
                                                         <button className="btn btn-light border border-0 px-3"
                                                             data-bs-toggle="modal" data-bs-target="#exampleModal1"
-                                                            onClick={() => { handleClickInfo(hd.maHoaDonNhapHang, hd.chiTietHoaDonNhapHangDTO) }}
+                                                            // onClick={() => { handleClickInfo(hd.maHoaDonNhapHang, hd.maChiTietHoaDonNhapHangDTO) }}
+                                                            onClick={() => { handleClickInfo(hd.maHoaDonNhapHang, hd) }}
                                                         >
                                                             <i className="fa-solid fa-info"></i>
                                                         </button>
@@ -235,17 +236,21 @@ const ListHoaDonNHPage = () => {
                                                         <th style={{ width: '20%' }}>Mã CTHD Nhập Hàng</th>
                                                         <th style={{ width: '20%' }}>Tên Sản Phẩm</th>
                                                         <th>Số Lượng</th>
-                                                        <th>Giá Tiền</th>
+                                                        <th>Đơn Giá</th>
+                                                        <th>Thành Tiền</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     {
-                                                        dataInfoHD.map((info, idx) => (
+                                                        dataInfoHD.chiTietHoaDonNhapHangDTO &&
+                                                        dataInfoHD.chiTietHoaDonNhapHangDTO.length > 0 &&
+                                                        dataInfoHD.chiTietHoaDonNhapHangDTO.map((info, idx) => (
                                                             <tr key={idx}>
                                                                 <td className='text-end'>{info.maChiTietHoaDonNhapHang}</td>
                                                                 <td>{info.sanPhamDTO.tenSanPham}</td>
                                                                 <td className='text-end'>{Number(info.soLuong).toLocaleString()}</td>
                                                                 <td className='text-end'>{Number(info.sanPhamDTO.giaVon).toLocaleString()}</td>
+                                                                <td className='text-end'>{(Number(info.sanPhamDTO.giaVon) * Number(info.soLuong)).toLocaleString()}</td>
                                                             </tr>
 
                                                         ))
@@ -253,6 +258,9 @@ const ListHoaDonNHPage = () => {
 
                                                 </tbody>
                                             </table>
+                                            <div className='frame-tong-cong text-end'>
+                                                Tổng cộng : <span className='fw-bold'>{Number(dataInfoHD.tongHoaDon).toLocaleString()}</span>
+                                            </div>
                                         </div>
                                         <div className="modal-footer">
                                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
@@ -263,8 +271,8 @@ const ListHoaDonNHPage = () => {
                             {/* end modal info hoa don */}
                             {/* phân trang */}
                             <ReactPaginate
-                                previousLabel="Previous"
-                                nextLabel="Next"
+                                previousLabel="<"
+                                nextLabel=">"
                                 breakLabel={'...'}
                                 // pageRangeDisplayed={3}
                                 marginPagesDisplayed={1}//số trang hiển thị bên trái và phải của trang đang chọn

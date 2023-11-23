@@ -161,7 +161,7 @@ const ListNVPage = () => {
                                 onClick={() => { changeRouter('/add-emp') }}
                             />
                             <div className='frame-select-search w-50'>
-                                <Select className='form-control border-0 w-100 p-0' options={options}
+                                <Select placeholder="Chọn mục tìm kiếm" className='form-control border-0 w-100 p-0' options={options}
                                     isMulti
                                     value={typeSearch}
                                     onChange={handleChangeSearch}
@@ -180,7 +180,7 @@ const ListNVPage = () => {
                             </div>
                             {/* end frame select search */}
                             <div className='frame-search d-flex rounded border'>
-                                <input className='form-control border-0' placeholder='Search...'
+                                <input className='form-control border-0' placeholder='Tìm kiếm'
                                     onChange={(e) => {
                                         setValueSearch(e.target.value);
                                         handleSubmitSearch(e.target.value, typeSearch)
@@ -197,12 +197,12 @@ const ListNVPage = () => {
                             <table className="table table-bordered table-striped">
                                 <thead className='table-light'>
                                     <tr>
-                                        <th>#</th>
+                                        {/* <th>#</th> */}
                                         <th>Account</th>
                                         <th>Tên NV</th>
                                         <th>Ngày Sinh</th>
                                         <th>Giới Tính</th>
-                                        <th>Action</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody id="body-table">
@@ -219,7 +219,7 @@ const ListNVPage = () => {
                                         dataDisplay.map((emp, idx) => (
                                             
                                             <tr key={idx}>
-                                                <td className='text-end' style={{ width: '5%', minWidth: '50px', maxWidth: '100px' }}>{(idx+1)+(rowsPerPage*currentPage)}</td>
+                                                {/* <td className='text-end' style={{ width: '5%', minWidth: '50px', maxWidth: '100px' }}>{(idx+1)+(rowsPerPage*currentPage)}</td> */}
                                                 <td>{emp.maNhanVien}</td>
                                                 <td>{emp.tenNhanVien}</td>
                                                 <td className='text-center'>{emp.ngaySinh}</td>
@@ -269,8 +269,8 @@ const ListNVPage = () => {
                             {/* end modal confirm xóa */}
                             {/* phân trang */}
                             <ReactPaginate
-                                previousLabel="Previous"
-                                nextLabel="Next"
+                                previousLabel="<"
+                                nextLabel=">"
                                 breakLabel={'...'}
                                 // pageRangeDisplayed={3}
                                 marginPagesDisplayed={1}//số trang hiển thị bên trái và phải của trang đang chọn

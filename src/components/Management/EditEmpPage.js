@@ -80,7 +80,7 @@ const EditEmpPage = () => {
           className="frame-content border shadow rounded p-2 mx-auto"
           style={{ width: "fit-content", backgroundColor: "#f3f3f3" }}
         >
-          {/* button back */}
+          {/* button Quay về */}
           <button
             type="button"
             style={{ maxWidth: "500px", width: "fit-content" }}
@@ -89,11 +89,11 @@ const EditEmpPage = () => {
               changeRouter("/list-emp");
             }}
           >
-            <i className="fa-solid fa-arrow-left me-2"></i>Back
+            <i className="fa-solid fa-arrow-left me-2"></i>Quay về
           </button>
-          {/* end button back */}
+          {/* end button Quay về */}
           <div className="title-body justify-content-center border-bottom d-flex">
-            <p className="fs-4 mb-2">Edit Nhân Viên</p>
+            <p className="fs-4 mb-2">Chỉnh sửa Nhân Viên</p>
           </div>
           <div
             className="container frame-input m-0 rounded px-2 py-1"

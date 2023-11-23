@@ -155,7 +155,7 @@ const ListNCCPage = () => {
                             />
                             {/* frame select search */}
                             <div className='frame-select-search w-50'>
-                                <Select className='form-control border-0 w-100 p-0' options={options}
+                                <Select placeholder="Chọn mục tìm kiếm" className='form-control border-0 w-100 p-0' options={options}
                                     isMulti
                                     value={typeSearch}
                                     onChange={handleChangeSearch}
@@ -174,7 +174,7 @@ const ListNCCPage = () => {
                             </div>
                             {/* end frame select search */}
                             <div className='frame-search d-flex rounded border'>
-                                <input className='form-control border-0' placeholder='Search...' 
+                                <input className='form-control border-0' placeholder='Tìm kiếm' 
                                 onChange={(e) => { 
                                     setValueSearch(e.target.value);
                                     handleSubmitSearch(e.target.value, typeSearch) 
@@ -194,7 +194,7 @@ const ListNCCPage = () => {
                                         <th>Email</th>
                                         <th>Số Điện Thoại</th>
                                         <th>Địa Chỉ</th>
-                                        <th>Action</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody id="body-table">
@@ -258,8 +258,8 @@ const ListNCCPage = () => {
                             {/* end modal confirm xóa */}
                             {/* phân trang */}
                             <ReactPaginate
-                                previousLabel="Previous"
-                                nextLabel="Next"
+                                previousLabel="<"
+                                nextLabel=">"
                                 breakLabel={'...'}
                                 // pageRangeDisplayed={3}
                                 marginPagesDisplayed={1}//số trang hiển thị bên trái và phải của trang đang chọn
